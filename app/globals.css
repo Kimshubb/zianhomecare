@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================================================
+   Theme
+   ========================================================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* Brand */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-primary: #3E6C8C;
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: #A9CBDB;
+  --color-secondary-soft: #DCEAF1;
+
+  --color-accent: #D98E73;
+  --color-accent-hover: #C97C61;
+
+  --color-background: #F6F5F1;
+  --color-surface: #FFFFFF;
+
+  --color-text: #2B2E33;
+  --color-muted: #5C6470;
+
+  --color-border: #D8DEE4;
+
+  /* Radius */
+
+  --radius-card: 1.25rem;
+  --radius-pill: 9999px;
+
+  /* Shadow */
+
+  --shadow-card: 0 10px 30px rgb(0 0 0 / 0.08);
+
+  /* Animation */
+
+--animate-pulse-ring: pulseRing 6s ease-out infinite;
+
+@keyframes pulseRing {
+  0% {
+    transform: translate(-50%, -50%) scale(0.88);
+    opacity: 0.45;
   }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.55);
+    opacity: 0;
+  }
+}
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.pulse-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 360px;
+  height: 360px;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid rgb(62 108 140 / 18%);
+  border-radius: 9999px;
+
+  opacity: 0;
 }
