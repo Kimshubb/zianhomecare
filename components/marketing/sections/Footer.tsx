@@ -44,9 +44,9 @@ export function Footer() {
             </h4>
 
             <div className="space-y-2 text-white/80">
-              <p>📞 +263 xx xxx xxxx</p>
+              <p>📞 +254 xx xxx xxxx</p>
               <p>✉ info@ziansafeharbour.com</p>
-              <p>📍 Harare, Zimbabwe</p>
+              <p>📍 Nairobi, Kenya</p>
             </div>
           </div>
         </div>
