@@ -56,36 +56,27 @@ type ButtonProps =
         href: string;
       });
 
-export function Button({
-  className,
-  variant,
-  size,
-  children,
-  href,
-  ...props
-}: ButtonProps) {
-  const classes = cn(
-    buttonVariants({
-      variant,
-      size,
-    }),
-    className
-  );
+export function Button({ className, variant, size, children, ...props }: ButtonProps) {
+  const classes = cn(buttonVariants({ variant, size }), className);
 
-  if (href) {
+  if (props.href) {
+    const { href, ...anchorProps } = props as AnchorHTMLAttributes<HTMLAnchorElement> & {
+      href: string;
+    };
+
     return (
-      <Link
-        href={href}
-        className={classes}
-        {...props}
-      >
+      <Link href={href} className={classes} {...anchorProps}>
         {children}
       </Link>
     );
   }
 
+  const { href: _href, ...buttonProps } = props as ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: never;
+  };
+
   return (
-    <button className={classes} {...props}>
+    <button className={classes} {...buttonProps}>
       {children}
     </button>
   );
