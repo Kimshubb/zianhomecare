@@ -61,7 +61,7 @@ export function BlogGrid() {
 
                 <div className="mt-6 flex items-center justify-between">
                   <span className="text-sm text-muted">
-                    {post.date}
+                    {post.published}
                   </span>
 
                   <Link
