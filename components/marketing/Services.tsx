@@ -26,35 +26,39 @@ export function Services() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {SERVICES.map((service) => (
-            <article
-              key={service.title}
-              className="
-                rounded-card
-                border
-                border-border
-                bg-surface
-                p-8
-                shadow-sm
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-lg
-              "
-            >
-              <div className="mb-5 text-4xl">
-                {service.emoji}
-              </div>
+          {SERVICES.map((service) => {
+            const Icon = service.icon;
 
-              <h3 className="mb-3 text-xl font-semibold text-primary">
-                {service.title}
-              </h3>
+            return (
+              <article
+                key={service.title}
+                className="
+                  rounded-card
+                  border
+                  border-border
+                  bg-surface
+                  p-8
+                  shadow-sm
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-lg
+                "
+              >
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary-soft text-primary">
+                  <Icon className="h-6 w-6" />
+                </div>
 
-              <p className="leading-7 text-muted">
-                {service.description}
-              </p>
-            </article>
-          ))}
+                <h3 className="mb-3 text-xl font-semibold text-primary">
+                  {service.title}
+                </h3>
+
+                <p className="leading-7 text-muted">
+                  {service.description}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </Container>
     </Section>
