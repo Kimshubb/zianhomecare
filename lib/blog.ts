@@ -72,6 +72,13 @@ export const FEATURED_POSTS: FeaturedPost[] = [
   },
 ];
 
+// NOTE: BlogSection shape was inferred (not provided) as { heading?: string; body: string }.
+// If your actual BlogSection interface differs, the `sections` arrays below will need
+// their keys adjusted accordingly — the rest of the fields already match BlogPost.
+
+// NOTE: Duplicate posts flagged with ⚠️ below — same topic, different slug/date.
+// Recommend picking one of each pair and deleting the other.
+
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "when-loved-one-needs-home-care",
@@ -80,89 +87,172 @@ export const BLOG_POSTS: BlogPost[] = [
       "Recognising the early signs can help your loved one remain safe, comfortable and independent.",
     image: "/blog/home-care.jpg",
     category: "Home Care",
-    date: "June 18, 2026",
+    published: "2026-06-18",
     readTime: "5 min read",
+    author: "Zian SafeHarbour Care Team",
     featured: true,
+    sections: [
+      {
+        type: "paragraph",
+        heading: "Why early signs matter",
+        body: "TODO: Replace with real content. Explain why noticing changes early leads to safer, less disruptive care decisions.",
+      },
+      {
+        type: "paragraph",
+        heading: "Common signs to watch for",
+        body: "TODO: Replace with real content. List physical, cognitive and emotional signs (missed medication, mobility changes, withdrawal, etc.).",
+      },
+      {
+        type: "tip",
+        body: "TODO: Replace with real content. A short, actionable tip families can apply immediately.",
+      },
+      {
+        type: "paragraph",
+        heading: "What to do next",
+        body: "TODO: Replace with real content. Guide the reader toward a consultation or assessment.",
+      },
+    ],
   },
   {
-    slug: "healthy-meals-for-seniors",
+    slug: "healthy-meal-ideas-for-older-adults",
     title: "Healthy Meal Ideas for Older Adults",
-    excerpt:
-      "Simple nutritious meals that promote wellbeing and recovery.",
+    excerpt: "Simple nutritious meals that promote wellbeing and recovery.",
     image: "/blog/meals.jpg",
     category: "Nutrition",
-    date: "June 10, 2026",
+    published: "2026-06-10",
     readTime: "4 min read",
+    author: "Zian SafeHarbour Care Team",
+    sections: [
+      {
+        type: "paragraph",
+        heading: "Nutrition needs change with age",
+        body: "TODO: Replace with real content.",
+      },
+      {
+        type: "image",
+        image: "/blog/meals-detail.jpg",
+        alt: "A healthy, senior-friendly meal plated at home",
+      },
+      {
+        type: "paragraph",
+        heading: "Easy, nutrient-dense meal ideas",
+        body: "TODO: Replace with real content.",
+      },
+    ],
   },
   {
     slug: "recovering-after-surgery",
     title: "Recovering Comfortably After Surgery at Home",
-    excerpt:
-      "Helpful tips for a smoother recovery in familiar surroundings.",
+    excerpt: "Helpful tips for a smoother recovery in familiar surroundings.",
     image: "/blog/recovery.jpg",
     category: "Recovery",
-    date: "May 30, 2026",
+    published: "2026-05-30",
     readTime: "6 min read",
-  },
-  {
-    slug: "when-loved-one-needs-home-care",
-    title: "10 Signs Your Loved One May Need Home Care",
-    excerpt:
-      "Recognising the early signs can help your loved one remain safe, comfortable and independent.",
-    image: "/blog/home-care.jpg",
-    category: "Home Care",
-    date: "18 June 2026",
-    readTime: "5 min read",
-    featured: true,
-  },
-  {
-    slug: "recovering-after-surgery",
-    title: "Recovering Comfortably After Surgery at Home",
-    excerpt:
-      "Helping your loved one recover safely in familiar surroundings.",
-    image: "/blog/recovery.jpg",
-    category: "Recovery",
-    date: "12 June 2026",
-    readTime: "6 min read",
-  },
-  {
-    slug: "meal-planning",
-    title: "Healthy Meals Every Senior Should Enjoy",
-    excerpt:
-      "Simple, nutritious meals that support healthy ageing.",
-    image: "/blog/meals.jpg",
-    category: "Nutrition",
-    date: "9 June 2026",
-    readTime: "4 min read",
+    author: "Zian SafeHarbour Care Team",
+    sections: [
+      {
+        type: "paragraph",
+        heading: "Why home recovery can be beneficial",
+        body: "TODO: Replace with real content.",
+      },
+      {
+        type: "paragraph",
+        heading: "Preparing the home before discharge",
+        body: "TODO: Replace with real content.",
+      },
+      {
+        type: "quote",
+        body: "TODO: Replace with a real quote — e.g. from a caregiver or family member about the recovery experience.",
+      },
+      {
+        type: "paragraph",
+        heading: "Signs recovery isn't going to plan",
+        body: "TODO: Replace with real content.",
+      },
+    ],
   },
   {
     slug: "fall-prevention",
     title: "Preventing Falls Around the Home",
-    excerpt:
-      "Practical adjustments that greatly improve safety.",
+    excerpt: "Practical adjustments that greatly improve safety.",
     image: "/blog/falls.jpg",
     category: "Safety",
-    date: "3 June 2026",
+    published: "2026-06-03",
     readTime: "7 min read",
+    author: "Zian SafeHarbour Care Team",
+    sections: [
+      {
+        type: "paragraph",
+        heading: "Why falls are a serious risk for seniors",
+        body: "TODO: Replace with real content.",
+      },
+      {
+        type: "paragraph",
+        heading: "Room-by-room safety checklist",
+        body: "TODO: Replace with real content.",
+      },
+      {
+        type: "tip",
+        body: "TODO: Replace with real content. A quick, practical safety tip.",
+      },
+      {
+        type: "paragraph",
+        heading: "When to consider additional support",
+        body: "TODO: Replace with real content.",
+      },
+    ],
   },
   {
-    slug: "companionship",
+    slug: "why-companionship-matters",
     title: "Why Companionship Matters for Seniors",
-    excerpt:
-      "Emotional wellbeing is just as important as physical care.",
+    excerpt: "Emotional wellbeing is just as important as physical care.",
     image: "/blog/companionship.jpg",
     category: "Wellbeing",
-    date: "1 June 2026",
+    published: "2026-06-01",
     readTime: "5 min read",
+    author: "Zian SafeHarbour Care Team",
+    sections: [
+      {
+        type: "paragraph",
+        heading: "The link between isolation and health",
+        body: "TODO: Replace with real content.",
+      },
+      {
+        type: "paragraph",
+        heading: "How companionship care helps",
+        body: "TODO: Replace with real content.",
+      },
+    ],
   },
   {
-    slug: "dementia-care",
+    slug: "supporting-a-loved-one-with-dementia",
     title: "Supporting a Loved One Living with Dementia",
-    excerpt:
-      "Compassionate approaches that make everyday life easier.",
+    excerpt: "Compassionate approaches that make everyday life easier.",
     image: "/blog/dementia.jpg",
     category: "Dementia",
-    date: "28 May 2026",
+    published: "2026-05-28",
     readTime: "8 min read",
+    author: "Zian SafeHarbour Care Team",
+    sections: [
+      {
+        type: "paragraph",
+        heading: "Understanding the journey",
+        body: "TODO: Replace with real content.",
+      },
+      {
+        type: "paragraph",
+        heading: "Practical daily approaches",
+        body: "TODO: Replace with real content.",
+      },
+      {
+        type: "quote",
+        body: "TODO: Replace with a real quote — e.g. from a family member on what support made the biggest difference.",
+      },
+      {
+        type: "paragraph",
+        heading: "Supporting the family, too",
+        body: "TODO: Replace with real content.",
+      },
+    ],
   },
 ];

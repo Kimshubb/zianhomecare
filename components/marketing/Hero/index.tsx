@@ -3,6 +3,7 @@ import { Section } from "@/components/layout/Section";
 
 import { HeroContent } from "./HeroContent";
 //import { HeroRing } from "./HeroRing";
+import { HeroCarousel } from "./HeroCarousel";
 
 export function Hero() {
   return (
@@ -13,6 +14,7 @@ export function Hero() {
       <Container>
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
           <HeroContent />
+          <HeroCarousel />
 
           {/*<HeroRing />*/}
         </div>

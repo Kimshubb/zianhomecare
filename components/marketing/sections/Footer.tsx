@@ -16,7 +16,7 @@ export function Footer() {
                 alt="Zian SafeHarbour Care logo"
                 width={150}
                 height={150}
-                className="h-32 w-auto"
+                className="h-48 w-auto"
               />
               <h3 className="text-2xl font-bold">
                 
