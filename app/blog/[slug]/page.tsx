@@ -32,7 +32,7 @@ export default async function BlogArticle({
 
       <ArticleContent article={article} />
 
-      <ShareButtons />
+      <ShareButtons title={article.title} />
 
       <RelatedPosts currentSlug={article.slug} />
     </>
