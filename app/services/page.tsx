@@ -37,7 +37,7 @@ export default function ServicesPage() {
 
       <Section>
         <Container>
-          <div className="mb-12 text-center">
+          <div className="mb-16 text-center">
             <h2 className="text-4xl font-bold text-primary">
               Services We Provide
             </h2>
@@ -48,45 +48,27 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="grid gap-6 md:grid-cols-3">
             {SERVICES.map((service) => (
               <article
                 key={service.title}
-                className="rounded-card border border-border bg-surface p-8 shadow-sm transition-shadow hover:shadow-lg"
+                className="rounded-card bg-secondary-soft p-6"
               >
-                <div className="flex flex-col gap-6 md:flex-row">
-                  <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-secondary-soft text-4xl">
-                    {service.emoji}
-                  </div>
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-primary">
+                  {service.title}
+                </h3>
 
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-primary">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-4 leading-8 text-muted">
-                      {service.description}
-                    </p>
-
-                    {/* TODO:
-                        Replace this placeholder with a more detailed
-                        service description once the content is available.
-                    */}
-
-                    <div className="mt-6 rounded-inner bg-background p-5">
-                      <h4 className="font-semibold text-primary">
-                        How this service helps
-                      </h4>
-
-                      <p className="mt-3 leading-7 text-muted">
-                        A more detailed explanation of this service will be
-                        added here, including what clients can expect, who this
-                        service is suitable for, and how our caregivers provide
-                        support while maintaining dignity and independence.
-                      </p>
-                    </div>
-                  </div>
+                <div className="mt-5 flex h-40 items-center justify-center rounded-card bg-surface">
+                  <service.icon
+                    size={56}
+                    strokeWidth={1.5}
+                    className="text-primary"
+                  />
                 </div>
+
+                <p className="mt-5 leading-7 text-muted">
+                  {service.description}
+                </p>
               </article>
             ))}
           </div>

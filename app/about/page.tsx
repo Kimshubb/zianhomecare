@@ -2,30 +2,75 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { EmergencyCTA } from "@/components/marketing/sections/EmergencyCTA";
+import Image from "next/image";
+import {
+  HeartHandshake,
+  Globe2,
+  Handshake,
+  Home,
+  GraduationCap,
+  ClipboardList,
+  CalendarClock,
+  MessageCircle,
+  MapPin,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
 
-      <Section className="bg-secondary-soft">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex rounded-pill bg-surface px-4 py-2 text-sm font-semibold text-primary shadow-sm">
+      <Section className="relative overflow-hidden bg-primary">
+        {/* Wave accents */}
+        <svg
+          className="pointer-events-none absolute inset-x-0 bottom-0 w-full opacity-10"
+          height="120"
+          viewBox="0 0 400 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0 60 Q100 30 200 60 T400 60 V120 H0 Z"
+            fill="var(--color-secondary-soft)"
+          />
+          <path
+            d="M0 85 Q100 55 200 85 T400 85 V120 H0 Z"
+            fill="var(--color-secondary-soft)"
+            opacity="0.7"
+          />
+        </svg>
+
+        {/* Logo mark accent — hidden on mobile so it never overlaps text,
+            fully contained (not clipped) on larger screens, tonal not colorful */}
+        <Image
+          src="/logo-mark-silhouette.png"
+          alt=""
+          width={400}
+          height={388}
+          className="pointer-events-none absolute right-8 top-1/2 hidden -translate-y-1/2 opacity-[0.14] md:block md:h-[300px] md:w-[300px] lg:right-16 lg:h-[400px] lg:w-[400px]"
+        />
+
+        <Container className="relative">
+          <div className="max-w-xl py-20 lg:py-28">
+            <span className="text-sm font-semibold uppercase tracking-widest text-accent">
               About Us
             </span>
 
-            <h1 className="mt-6 text-5xl font-bold text-primary lg:text-6xl">
-              Compassionate Care.
-              <br />
-              Trusted Support.
+            <h1 className="mt-3 text-4xl font-bold leading-tight text-white lg:text-5xl">
+              Every family needs
+              <br />a harbour to return to.
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted">
-              At Zian SafeHarbour Care, we believe everyone deserves to age
-              with dignity, independence and confidence in the comfort of
-              their own home.
+            <p className="mt-5 max-w-md text-base leading-7 text-white/80">
+              When caring for someone you love starts to feel like too much
+              to carry alone, we&apos;re the steady place to anchor.
             </p>
+
+            <div className="mt-8">
+              <Button href="/contact">
+                Find Your Anchor
+              </Button>
+            </div>
           </div>
         </Container>
       </Section>
@@ -66,7 +111,11 @@ export default function AboutPage() {
 
             <div className="flex aspect-square items-center justify-center rounded-card bg-secondary-soft">
               <div className="text-center">
-                <div className="text-6xl">🏡</div>
+                <Home
+                  size={64}
+                  strokeWidth={1.5}
+                  className="mx-auto text-primary"
+                />
 
                 <p className="mt-4 text-muted">
                   Team photograph placeholder
@@ -96,17 +145,17 @@ export default function AboutPage() {
             {[
               {
                 title: "Mission",
-                emoji: "💙",
-                text: "Deliver compassionate, personalised home care that promotes dignity and independence.",
+                icon: HeartHandshake,
+                text: "To stand beside every patient & family with compassionate, skilled care — bringing comfort, dignity & reassurance in every moment, whether at home or in hospital.",
               },
               {
                 title: "Vision",
-                emoji: "🌍",
-                text: "To become Zimbabwe's most trusted provider of quality home healthcare services.",
+                icon: Globe2,
+                text: "To redefine caregiving as a trusted presence in every stage of life — where compassion meets professionalism, & every patient is treated with dignity, respect & humanity.",
               },
               {
                 title: "Values",
-                emoji: "🤝",
+                icon: Handshake,
                 text: "Compassion, integrity, professionalism and respect guide every decision we make.",
               },
             ].map((item) => (
@@ -114,8 +163,12 @@ export default function AboutPage() {
                 key={item.title}
                 className="rounded-card bg-surface p-8 shadow-sm transition-shadow hover:shadow-lg"
               >
-                <div className="mb-5 text-5xl">
-                  {item.emoji}
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-secondary-soft">
+                  <item.icon
+                    size={28}
+                    strokeWidth={1.75}
+                    className="text-primary"
+                  />
                 </div>
 
                 <h3 className="text-2xl font-semibold text-primary">
@@ -141,21 +194,45 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {[
-              "Qualified & Compassionate Caregivers",
-              "Personalised Care Plans",
-              "Flexible Home Care Services",
-              "Reliable Family Communication",
+              {
+                text: "Qualified & Compassionate Caregivers",
+                icon: GraduationCap,
+              },
+              {
+                text: "Personalised Care Plans",
+                icon: ClipboardList,
+              },
+              {
+                text: "Flexible Home Care Services",
+                icon: CalendarClock,
+              },
+              {
+                text: "Reliable Family Communication",
+                icon: MessageCircle,
+              },
+              {
+                text: "Care Anywhere You Need Us",
+                icon: MapPin,
+              },
+              {
+                text: "Reliable & Consistent",
+                icon: ShieldCheck,
+              },
             ].map((reason) => (
               <div
-                key={reason}
-                className="rounded-card border border-border bg-surface p-6 text-center shadow-sm"
+                key={reason.text}
+                className="rounded-card border border-border bg-surface p-4 text-center shadow-sm"
               >
-                <div className="mb-4 text-4xl">✔</div>
+                <reason.icon
+                  size={24}
+                  strokeWidth={1.75}
+                  className="mx-auto mb-3 text-accent"
+                />
 
-                <p className="font-medium text-text">
-                  {reason}
+                <p className="text-sm font-medium text-text">
+                  {reason.text}
                 </p>
               </div>
             ))}

@@ -4,6 +4,7 @@ import type {
   Step,
   ValueItem,
 } from "./types";
+import { Bath, Stethoscope, Activity, ShieldPlus, Moon } from "lucide-react";
 
 export const BRAND_NAME = "ZianHomeCare";
 
@@ -24,6 +25,10 @@ export const NAV_LINKS = [
     label: "Contact",
     href: "/contact",
   },
+  {
+    label: "Blog",
+    href: "/blog",
+  }
 ] as const;
 
 /**
@@ -61,34 +66,34 @@ export const STATS = [
   },
 ] as const;
 
+
+
+
+
 export const SERVICES = [
   {
-    emoji: "🏡",
-    title: "Personal Care",
-    description: "Daily assistance with dignity and compassion.",
+    icon: Bath,
+    title: "Personal & Daily Care",
+    description:
+      "Assistance with daily routines like bathing, dressing and mobility, delivered with dignity and respect.",
   },
   {
-    emoji: "💊",
-    title: "Medication Support",
-    description: "Helping clients stay on schedule safely.",
+    icon: Stethoscope,
+    title: "Clinical Support",
+    description: "Professional medical care and monitoring to ensure safety and peace of mind.",
   },
   {
-    emoji: "🤝",
-    title: "Companionship",
-    description: "Meaningful social interaction and emotional support.",
+    icon: Activity,
+    title: "Recovery & Therapy Support",
+    description: "Restoring mobility and independence through targeted therapy.",
   },
   {
-    emoji: "🚗",
-    title: "Transportation",
-    description: "Appointments, shopping and community visits.",
+    icon: ShieldPlus,
+    title: "Specialized Care",
+    description: "Support for clients with specific medical conditions or needs.",
   },
   {
-    emoji: "🍽️",
-    title: "Meal Preparation",
-    description: "Healthy meals tailored to individual needs.",
-  },
-  {
-    emoji: "🌙",
+    icon: Moon,
     title: "Respite Care",
     description: "Support that gives family caregivers time to recharge.",
   },

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Container } from "@/components/layout/Container";
@@ -9,13 +10,21 @@ export function Footer() {
       <Container>
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <h3 className="text-2xl font-bold">
-              Zian SafeHarbour Care
-            </h3>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/full-logozian.png"
+                alt="Zian SafeHarbour Care logo"
+                width={150}
+                height={150}
+                className="h-32 w-auto"
+              />
+              <h3 className="text-2xl font-bold">
+                
+              </h3>
+            </div>
 
             <p className="mt-4 max-w-sm text-white/80">
-              Compassionate home care that empowers people to live safely,
-              comfortably and independently.
+              Compassionate home care wherever you need it - restoring dignity, comfort and peace of mind for families and their loved ones.
             </p>
           </div>
 
