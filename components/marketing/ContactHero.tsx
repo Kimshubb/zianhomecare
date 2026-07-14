@@ -62,7 +62,7 @@ export function ContactHero() {
 
               <div className="flex aspect-[4/5] items-center justify-center bg-secondary-soft">
                 <div className="text-center">
-                  <div className="text-7xl">🤝</div>
+                  <div className="text-7xl"> </div>
 
                   <p className="mt-6 text-muted">
                     Caregiver & Client Image
@@ -72,7 +72,7 @@ export function ContactHero() {
 
             </div>
 
-            {/* Floating card */}
+            {/* Floating card 
 
             <div className="absolute -bottom-6 -left-6 rounded-card bg-white p-5 shadow-xl">
               <p className="text-sm text-muted">
@@ -86,7 +86,7 @@ export function ContactHero() {
               <p className="text-sm text-muted">
                 Client Satisfaction
               </p>
-            </div>
+            </div>*/}
           </div>
 
         </div>

@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 
-import { SERVICES } from "@/lib/constants";
+import { SERVICES } from "@/lib/services";
 
 export function Services() {
   return (
@@ -54,7 +54,7 @@ export function Services() {
                 </h3>
 
                 <p className="leading-7 text-muted">
-                  {service.description}
+                  {service.shortDescription}
                 </p>
               </article>
             );

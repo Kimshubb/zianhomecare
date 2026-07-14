@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export type BadgePosition =
   | "top"
   | "right"
@@ -41,4 +43,24 @@ export interface SceneData {
 export interface StatBadgeData {
   position: BadgePosition;
   label: string;
+}
+
+export interface Service {
+  slug: string;
+  icon: LucideIcon;
+  title: string;
+  shortDescription: string;
+  heroImage: string;
+  overview: string;
+  includes: {
+    title: string;
+    image: string;
+    description: string;
+  }[];
+  benefits: string[];
+  suitableFor: string[];
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
 }

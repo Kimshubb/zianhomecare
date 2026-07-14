@@ -2,8 +2,9 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { EmergencyCTA } from "@/components/marketing/sections/EmergencyCTA";
+import Link from "next/link";
 
-import { SERVICES } from "@/lib/constants";
+import { SERVICES } from "@/lib/services";
 
 export default function ServicesPage() {
   return (
@@ -50,26 +51,33 @@ export default function ServicesPage() {
 
           <div className="grid gap-6 md:grid-cols-3">
             {SERVICES.map((service) => (
-              <article
+              <Link
                 key={service.title}
-                className="rounded-card bg-secondary-soft p-6"
+                href={`/services/${service.slug}`}
+                className="group block rounded-card bg-secondary-soft p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
               >
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-primary">
                   {service.title}
                 </h3>
 
-                <div className="mt-5 flex h-40 items-center justify-center rounded-card bg-surface">
+                <div className="mt-5 flex h-40 items-center justify-center rounded-card bg-surface transition-colors duration-300 group-hover:bg-primary/5">
                   <service.icon
                     size={56}
                     strokeWidth={1.5}
-                    className="text-primary"
+                    className="text-primary transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
 
                 <p className="mt-5 leading-7 text-muted">
-                  {service.description}
+                  {service.shortDescription}
                 </p>
-              </article>
+                <div className="mt-6 flex items-center font-semibold text-primary">
+                  Learn more
+                  <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </Container>
