@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
+import Image from "next/image";
 
 export function ContactHero() {
   return (
@@ -56,20 +57,17 @@ export function ContactHero() {
           {/* Right */}
 
           <div className="relative">
-            <div className="overflow-hidden rounded-card bg-surface shadow-xl">
-
-              {/* Placeholder */}
-
-              <div className="flex aspect-[4/5] items-center justify-center bg-secondary-soft">
-                <div className="text-center">
-                  <div className="text-7xl"> </div>
-
-                  <p className="mt-6 text-muted">
-                    Caregiver & Client Image
-                  </p>
-                </div>
+            <div className="overflow-hidden rounded-card shadow-xl">
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src="/services/discharge-care.png"
+                  alt="Caregiver speaking with a client and family"
+                  fill
+                  priority
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-
             </div>
 
             {/* Floating card 

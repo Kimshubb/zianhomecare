@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 
 import { Button } from "@/components/ui/Button";
+import Image from "next/image";
 
 export function About() {
   return (
@@ -12,14 +13,18 @@ export function About() {
       <Container>
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Image Placeholder */}
-
-          <div className="order-2 lg:order-1">
-            <div className="flex aspect-[4/3] items-center justify-center rounded-card border border-border bg-surface shadow-card">
-              <span className="text-lg font-medium text-muted">
-                Family Care Image
-              </span>
-            </div>
+        <div className="order-2 lg:order-1">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-card shadow-card">
+            <Image
+              src="/hero/carouselmain.png"
+              alt="Caregiver supporting an older adult at home"
+              fill
+              priority
+              className="object-cover transition-transform duration-500 hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
+        </div>
 
           {/* Content */}
 

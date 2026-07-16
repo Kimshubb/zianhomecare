@@ -1,3 +1,12 @@
+import Link from "next/link";
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  Clock3,
+} from "lucide-react";
+import { FaFacebook, FaTiktok } from "react-icons/fa6";
+
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
@@ -7,11 +16,9 @@ export function ContactSection() {
     <Section id="contact-form">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-
           {/* Left Side */}
 
           <article className="rounded-card bg-secondary-soft p-8">
-
             <span className="inline-flex rounded-pill bg-surface px-4 py-2 text-sm font-semibold text-primary">
               Get In Touch
             </span>
@@ -26,10 +33,11 @@ export function ContactSection() {
             </p>
 
             <div className="mt-10 space-y-8">
+              {/* Phone */}
 
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-xl text-white">
-                  📞
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white">
+                  <Phone className="h-5 w-5" />
                 </div>
 
                 <div>
@@ -37,9 +45,12 @@ export function ContactSection() {
                     Call Us
                   </h3>
 
-                  <p className="mt-1 text-muted">
-                    +254 XX XXX XXXX
-                  </p>
+                  <a
+                    href="tel:+254790174570"
+                    className="mt-1 block transition-colors hover:text-primary"
+                  >
+                    +254 790 174 570
+                  </a>
 
                   <p className="text-sm text-muted">
                     Available 24/7
@@ -47,9 +58,11 @@ export function ContactSection() {
                 </div>
               </div>
 
+              {/* WhatsApp */}
+
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl text-white">
-                  💬
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                  <MessageCircle className="h-5 w-5" />
                 </div>
 
                 <div>
@@ -57,9 +70,14 @@ export function ContactSection() {
                     WhatsApp
                   </h3>
 
-                  <p className="mt-1 text-muted">
-                    +263 XX XXX XXXX
-                  </p>
+                  <a
+                    href="https://wa.me/254790174570"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block transition-colors hover:text-primary"
+                  >
+                    +254 790 174 570
+                  </a>
 
                   <p className="text-sm text-muted">
                     Fast responses during business hours
@@ -67,9 +85,11 @@ export function ContactSection() {
                 </div>
               </div>
 
+              {/* Email */}
+
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-xl text-white">
-                  ✉️
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white">
+                  <Mail className="h-5 w-5" />
                 </div>
 
                 <div>
@@ -77,15 +97,20 @@ export function ContactSection() {
                     Email
                   </h3>
 
-                  <p className="mt-1 text-muted">
-                    info@ziansafeharbour.co.zw
-                  </p>
+                  <a
+                    href="mailto:info@ziansafeharbour.com"
+                    className="mt-1 block transition-colors hover:text-primary"
+                  >
+                    info@ziansafeharbour.com
+                  </a>
                 </div>
               </div>
 
+              {/* Office Hours */}
+
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl text-white">
-                  🕒
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                  <Clock3 className="h-5 w-5" />
                 </div>
 
                 <div>
@@ -103,14 +128,48 @@ export function ContactSection() {
                 </div>
               </div>
 
-            </div>
+              {/* Connect With Us */}
 
+              <div className="flex gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+                  <FaTiktok className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-primary">
+                    Connect With Us
+                  </h3>
+
+                  <a
+                    href="https://www.tiktok.com/@ziansafeharbour"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-neutral-800"
+                  >
+                    <FaTiktok className="h-4 w-4" />
+                    Follow us on TikTok
+                  </a>
+                  <a
+                    href="https://www.facebook.com/ziansafeharbour"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#1877F2] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
+                  >
+                    <FaFacebook className="h-4 w-4" />
+                    Facebook
+                  </a>
+
+                  <p className="mt-3 text-sm text-muted">
+                    Home care tips, caregiver advice and updates from our team.
+                  </p>
+                </div>
+              </div>
+            </div>
           </article>
 
           {/* Right Side */}
 
           <article className="rounded-card bg-surface p-8 shadow-lg">
-
             <h2 className="text-3xl font-bold text-primary">
               Send Us A Message
             </h2>
@@ -121,9 +180,7 @@ export function ContactSection() {
             </p>
 
             <form className="mt-8 space-y-6">
-
               <div className="grid gap-6 md:grid-cols-2">
-
                 <div>
                   <label className="mb-2 block font-medium">
                     Full Name
@@ -143,11 +200,10 @@ export function ContactSection() {
 
                   <input
                     type="tel"
-                    placeholder="+263..."
+                    placeholder="+254 790 174 570"
                     className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
                   />
                 </div>
-
               </div>
 
               <div>
@@ -157,7 +213,7 @@ export function ContactSection() {
 
                 <input
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder="info@ziansafeharbour.com"
                   className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
                 />
               </div>
@@ -171,9 +227,9 @@ export function ContactSection() {
                   <option>I'm not sure yet</option>
                   <option>Personal Care</option>
                   <option>Medication Support</option>
-                  <option>Companionship</option>
-                  <option>Transportation</option>
-                  <option>Meal Preparation</option>
+                  <option>Recovery Care</option>
+                  <option>Physiotherapy</option>
+                  <option>Palliative Care</option>
                   <option>Respite Care</option>
                 </select>
               </div>
@@ -203,11 +259,8 @@ export function ContactSection() {
                 <span>✓ Secure & confidential</span>
                 <span>✓ Response within 24 hours</span>
               </div>
-
             </form>
-
           </article>
-
         </div>
       </Container>
     </Section>

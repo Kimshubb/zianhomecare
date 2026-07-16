@@ -25,7 +25,7 @@ export function EmergencyCTA() {
             </p>
 
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button variant="white" href="tel:+263771234567">
+              <Button variant="ghost" href="tel:+254790174570">
                 Call Us Today
               </Button>
 

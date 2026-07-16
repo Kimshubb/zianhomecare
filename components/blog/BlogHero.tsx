@@ -35,7 +35,7 @@ export function BlogHero() {
 
           <div className="overflow-hidden rounded-card shadow-xl">
             <Image
-              src="/blog/hero.jpg"
+              src="/services/home-care.png"
               alt="Caregiver assisting an elderly client"
               width={700}
               height={500}

@@ -1,35 +1,40 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaFacebookF, FaTiktok } from "react-icons/fa6";
 
 import { Container } from "@/components/layout/Container";
 import { NAV_LINKS } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-primary py-16 text-primary-foreground">
+    <footer className="bg-primary py-10 text-primary-foreground">
       <Container>
-        <div className="grid gap-12 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-3">
+          {/* Brand */}
+
           <div>
-            <div className="flex items-center gap-3">
+            <Link href="/">
               <Image
                 src="/full-logozian.png"
                 alt="Zian SafeHarbour Care logo"
                 width={150}
                 height={150}
-                className="h-48 w-auto"
+                className="h-24 w-auto"
+                priority
               />
-              <h3 className="text-2xl font-bold">
-                
-              </h3>
-            </div>
+            </Link>
 
-            <p className="mt-4 max-w-sm text-white/80">
-              Compassionate home care wherever you need it - restoring dignity, comfort and peace of mind for families and their loved ones.
+            <p className="mt-4 max-w-sm leading-7 text-white/80">
+              Compassionate home care wherever you need it — restoring
+              dignity, comfort and peace of mind for families and their
+              loved ones.
             </p>
           </div>
 
+          {/* Navigation */}
+
           <div>
-            <h4 className="mb-5 font-semibold">
+            <h4 className="mb-5 text-lg font-semibold">
               Quick Links
             </h4>
 
@@ -47,22 +52,66 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Contact */}
+
           <div>
-            <h4 className="mb-5 font-semibold">
-              Contact
+            <h4 className="mb-5 text-lg font-semibold">
+              Contact Us
             </h4>
 
-            <div className="space-y-2 text-white/80">
-              <p>📞 +254 xx xxx xxxx</p>
-              <p>✉ info@ziansafeharbour.com</p>
+            <div className="space-y-3 text-white/80">
+              <a
+                href="tel:+254790174570"
+                className="block transition-colors hover:text-white"
+              >
+                📞 +254 790 174 570
+              </a>
+
+              <a
+                href="mailto:info@ziansafeharbour.com"
+                className="block transition-colors hover:text-white"
+              >
+                ✉ info@ziansafeharbour.com
+              </a>
+
               <p>📍 Nairobi, Kenya</p>
+            </div>
+
+            <div className="mt-6">
+              <p className="mb-3 text-sm font-medium text-white">
+                Connect With Us
+              </p>
+
+              <div className="flex gap-3">
+                <a
+                  href="https://facebook.com/yourpage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all duration-300 hover:bg-white hover:text-primary"
+                >
+                  <FaFacebookF size={16} />
+                </a>
+
+                <a
+                  href="https://tiktok.com/@youraccount"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all duration-300 hover:bg-white hover:text-primary"
+                >
+                  <FaTiktok size={16} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/15 pt-6 text-center text-sm text-white/60">
-          © {new Date().getFullYear()} Zian SafeHarbour Care.
-          All rights reserved.
+        <div className="mt-10 border-t border-white/15 pt-6 text-center">
+          <p className="text-sm text-white/60">
+            © {new Date().getFullYear()} Zian SafeHarbour Care. All rights
+            reserved.
+          </p>
         </div>
       </Container>
     </footer>

@@ -37,10 +37,14 @@ export function ServiceExperience({
               </p>
             </div>
 
-            <div className="flex h-[420px] items-center justify-center rounded-card bg-secondary-soft">
-              <span className="text-muted">
-                Service Image
-              </span>
+            <div className="relative h-[420px] overflow-hidden rounded-card shadow-xl">
+              <Image
+                src={service.heroImage2}
+                alt={service.title}
+                fill
+                className="object-cover transition-transform duration-500 hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </section>

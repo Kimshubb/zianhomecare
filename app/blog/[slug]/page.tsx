@@ -6,6 +6,7 @@ import { ArticleHero } from "@/components/blog/ArticleHero";
 import { ArticleContent } from "@/components/blog/ArticleContent";
 import { ShareButtons } from "@/components/blog/ShareButtons";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
+import { EmergencyCTA } from "@/components/marketing/sections/EmergencyCTA";
 
 interface PageProps {
   params: Promise<{
@@ -35,6 +36,7 @@ export default async function BlogArticle({
       <ShareButtons title={article.title} />
 
       <RelatedPosts currentSlug={article.slug} />
+      <EmergencyCTA />
     </>
   );
 }

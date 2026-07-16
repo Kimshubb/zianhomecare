@@ -51,6 +51,7 @@ export interface Service {
   title: string;
   shortDescription: string;
   heroImage: string;
+  heroImage2: string;
   overview: string;
   includes: {
     title: string;

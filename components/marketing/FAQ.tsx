@@ -24,7 +24,7 @@ const FAQS = [
   {
     question: "Which areas do you serve?",
     answer:
-      "We currently provide home care services throughout Harare and surrounding areas. Contact us to confirm coverage in your location.",
+      "We currently provide home care services throughout Nairobi, Mombasa and surrounding areas. Contact us to confirm coverage in your location.",
   },
   {
     question: "What services do you offer?",

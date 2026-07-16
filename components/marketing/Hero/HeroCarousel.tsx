@@ -11,7 +11,7 @@ import { cn } from "@/lib/cn";
 const SLIDES = [
   { src: "/hero/carousel-1.png", alt: "Caregiver providing personal care at home" },
   { src: "/hero/carousel-2.png", alt: "Caregiver and client sharing a moment of companionship" },
-  { src: "/hero/carosel-3.png", alt: "A healthy meal prepared for a client" },
+  { src: "/hero/carouselmain.png", alt: "A healthy meal prepared for a client" },
 ];
 
 const AUTOPLAY_INTERVAL_MS = 5000;
