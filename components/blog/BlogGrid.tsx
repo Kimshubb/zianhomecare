@@ -1,11 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { BLOG_POSTS } from "@/lib/blog";
+import { BlogPost } from "@/lib/blog";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 
-export function BlogGrid() {
+interface BlogGridProps {
+  posts: BlogPost[];
+}
+
+export function BlogGrid({
+  posts,
+}: BlogGridProps) {
   return (
     <Section id="articles">
       <Container>
@@ -25,7 +31,7 @@ export function BlogGrid() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {BLOG_POSTS.map((post) => (
+          {posts.map((post) => (
             <article
               key={post.slug}
               className="group overflow-hidden rounded-card bg-surface shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
@@ -43,7 +49,7 @@ export function BlogGrid() {
               <div className="p-7">
                 <div className="flex items-center justify-between">
                   <span className="rounded-full bg-secondary-soft px-3 py-1 text-xs font-semibold text-primary">
-                    {post.category}
+                    {/*{JSON.stringify(post.category)}*/}{post.category.title}
                   </span>
 
                   <span className="text-sm text-muted">

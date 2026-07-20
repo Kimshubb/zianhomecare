@@ -8,8 +8,8 @@ export const SERVICES: Service[] = [
     title: "Personal & Daily Care",
     shortDescription:
       "Respectful assistance with daily routines that helps clients maintain dignity and independence.",
-    heroImage: "/services/home-care.png",
-    heroImage2: "/services/carehero.png",
+    heroImage2: "/services/home-care.png",
+    heroImage: "/services/home-carenew.jpeg",
     overview:
       "Our Personal & Daily Care service provides compassionate assistance with everyday activities while encouraging independence. Every care plan is tailored to the individual's needs, routines and preferences.",
     includes: [

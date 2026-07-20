@@ -4,13 +4,14 @@ import { BlogGrid } from "@/components/blog/BlogGrid";
 import { FeaturedGuides } from "@/components/blog/FeaturedGuides";
 //import { Resources } from "@/components/blog/Resources";
 //import { Newsletter } from "@/components/blog/Newsletter";
+import { BLOG_POSTS } from "@/lib/blog";
 
 export default function BlogPage() {
   return (
     <>
       <BlogHero />
       <Categories />
-      <BlogGrid />
+      <BlogGrid posts={BLOG_POSTS} />
       <FeaturedGuides />
     </>
   );

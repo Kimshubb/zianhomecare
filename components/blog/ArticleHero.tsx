@@ -35,17 +35,23 @@ export function ArticleHero({ article }: ArticleHeroProps) {
 
           <ChevronRight className="h-4 w-4" />
 
-          <span className="text-primary">
-            {article.category}
-          </span>
+          <Link
+            href={`/blog/category/${article.category.slug}`}
+            className="font-medium text-primary transition-colors hover:text-accent"
+          >
+            {article.category.title}
+          </Link>
         </nav>
 
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Content */}
           <div>
-            <span className="inline-flex rounded-pill bg-secondary-soft px-4 py-2 text-sm font-semibold text-primary">
-              {article.category}
-            </span>
+            <Link
+              href={`/blog/category/${article.category.slug}`}
+              className="inline-flex rounded-pill bg-secondary-soft px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+            >
+              {article.category.title}
+            </Link>
 
             <h1 className="mt-6 text-5xl font-bold leading-tight text-primary lg:text-6xl">
               {article.title}

@@ -5,6 +5,7 @@ import "./globals.css";
 
 import { Navbar } from "@/components/marketing/Navbar";
 import { Footer } from "@/components/marketing/sections/Footer";
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsapp";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         <main>{children}</main>
 
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

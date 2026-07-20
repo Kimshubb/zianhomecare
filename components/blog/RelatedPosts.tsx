@@ -53,7 +53,7 @@ export function RelatedPosts({
 
               <div className="p-6">
                 <span className="rounded-pill bg-secondary-soft px-3 py-1 text-xs font-semibold text-primary">
-                  {post.category}
+                  {post.category.title}
                 </span>
 
                 <h3 className="mt-4 text-xl font-bold text-primary">

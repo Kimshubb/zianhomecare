@@ -141,7 +141,7 @@ export function ContactSection() {
                   </h3>
 
                   <a
-                    href="https://www.tiktok.com/@ziansafeharbour"
+                    href="https://www.tiktok.com/@ziancareelderlyservices"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-neutral-800"

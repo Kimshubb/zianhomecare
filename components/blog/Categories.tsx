@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-
-const CATEGORIES = [
+import { BLOG_CATEGORIES } from "@/lib/blogCategories";
+/**const CATEGORIES = [
   {
     title: "Home Care",
     description: "Daily support, independence and compassionate care.",
@@ -41,7 +41,7 @@ const CATEGORIES = [
     image: "/blog/categories/wellbeing.jpg",
     href: "/blog/category/wellbeing",
   },
-];
+];*/
 
 export function Categories() {
   return (
@@ -62,10 +62,10 @@ export function Categories() {
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-          {CATEGORIES.map((category) => (
+          {BLOG_CATEGORIES.map((category) => (
             <Link
               key={category.title}
-              href={category.href}
+              href={`/blog/category/${category.slug}`}
               className="group relative overflow-hidden rounded-card shadow-lg"
             >
               <div className="relative h-72">

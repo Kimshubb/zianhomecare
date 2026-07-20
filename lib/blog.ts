@@ -11,11 +11,14 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   image: string;
-  category: string;
   published: string;
   readTime: string;
   author?: string;
   featured?: boolean;
+  category: {
+    slug: string;
+    title: string;
+  }
 
   sections: BlogSection[];
 }
@@ -25,7 +28,10 @@ export interface BlogArticle {
   title: string;
   excerpt: string;
   image: string;
-  category: string;
+  category: {
+    slug: string;
+    title: string;
+  }
 
   featured?: boolean;
   guide?: boolean;
@@ -42,7 +48,10 @@ export interface FeaturedPost {
   title: string;
   excerpt: string;
   image: string;
-  category: string;
+  category: {
+    slug: string;
+    title: string;
+  }
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -52,7 +61,10 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "Recognising the early signs can help your loved one remain safe, comfortable and independent.",
     image: "/services/home-care.png",
-    category: "Home Care",
+    category: {
+      slug: "home-care",
+      title: "Home Care",
+    },
     published: "2026-06-18",
     readTime: "5 min read",
     author: "Zian SafeHarbour Care Team",
@@ -84,7 +96,10 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Healthy Meal Ideas for Older Adults",
     excerpt: "Simple nutritious meals that promote wellbeing and recovery.",
     image: "/services/meals.png",
-    category: "Nutrition",
+    category: {
+      slug: "nutrition",
+      title: "Nutrition",
+    },
     published: "2026-06-10",
     readTime: "4 min read",
     author: "Zian SafeHarbour Care Team",
@@ -111,7 +126,10 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Recovering Comfortably After Surgery at Home",
     excerpt: "Helpful tips for a smoother recovery in familiar surroundings.",
     image: "/services/discharge-care.png",
-    category: "Recovery",
+    category: {
+      slug: "recovery",
+      title: "Recovery",
+    },
     published: "2026-05-30",
     readTime: "6 min read",
     author: "Zian SafeHarbour Care Team",
@@ -142,7 +160,10 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Preventing Falls Around the Home",
     excerpt: "Practical adjustments that greatly improve safety.",
     image: "/services/falls.jpg",
-    category: "Safety",
+    category: {
+      slug: "safety",
+      title: "Safety",
+    },
     published: "2026-06-03",
     readTime: "7 min read",
     author: "Zian SafeHarbour Care Team",
@@ -173,7 +194,10 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Why Companionship Matters for Seniors",
     excerpt: "Emotional wellbeing is just as important as physical care.",
     image: "/services/company.jpg",
-    category: "Wellbeing",
+    category: {
+      slug: "wellbeing",
+      title: "Wellbeing",
+    },
     published: "2026-06-01",
     readTime: "5 min read",
     author: "Zian SafeHarbour Care Team",
@@ -195,7 +219,10 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Supporting a Loved One Living with Dementia",
     excerpt: "Compassionate approaches that make everyday life easier.",
     image: "/services/personal-care.png",
-    category: "Dementia",
+    category: {
+      slug: "dementia",
+      title: "Dementia",
+    },
     published: "2026-05-28",
     readTime: "8 min read",
     author: "Zian SafeHarbour Care Team",
