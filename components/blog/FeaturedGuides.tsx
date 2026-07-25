@@ -1,9 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
-import { Button } from "@/components/ui/Button";
 
 const GUIDES = [
   {
@@ -11,23 +9,24 @@ const GUIDES = [
     description:
       "Everything families need to know before arranging professional home care.",
     image: "/blog/guides/family-guide.jpg",
-    href: "/blog/family-guide",
+    file: "/guides/family-guide.pdf",
   },
   {
     title: "Preparing Your Home for Safe Independent Living",
     description:
       "Simple changes that improve comfort, accessibility and safety.",
     image: "/blog/guides/home-safety.jpg",
-    href: "/blog/home-safety",
+    file: "/guides/home-safety-guide.pdf",
   },
   {
     title: "Choosing the Right Home Care Provider",
     description:
       "Questions every family should ask before making an important decision.",
-    image: "/blog/guides/choosing-care.jpg",
-    href: "/blog/choosing-care",
+    image: "/blog/guides/choosing-home-care.jpg",
+    file: "/guides/choosing-home-care-provider.pdf",
   },
 ];
+
 export function FeaturedGuides() {
   return (
     <Section>
@@ -42,7 +41,8 @@ export function FeaturedGuides() {
           </h2>
 
           <p className="mt-4 text-lg text-muted">
-            In-depth guides written to help you make confident care decisions.
+            Download practical guides designed to help you make confident,
+            informed home care decisions.
           </p>
         </div>
 
@@ -50,10 +50,12 @@ export function FeaturedGuides() {
           {GUIDES.map((guide, index) => (
             <article
               key={guide.title}
-              className={`grid items-center gap-10 rounded-card bg-surface p-8 shadow-md lg:grid-cols-2 ${
+              className={`grid items-center gap-10 rounded-card bg-surface p-8 shadow-md transition-shadow duration-300 hover:shadow-xl lg:grid-cols-2 ${
                 index % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
               }`}
             >
+              {/* Guide Image */}
+
               <div className="overflow-hidden rounded-inner">
                 <Image
                   src={guide.image}
@@ -64,8 +66,14 @@ export function FeaturedGuides() {
                 />
               </div>
 
+              {/* Guide Content */}
+
               <div>
-                <h3 className="text-3xl font-bold text-primary">
+                <span className="inline-flex rounded-full bg-secondary-soft px-3 py-1 text-xs font-semibold text-primary">
+                  Free PDF Guide
+                </span>
+
+                <h3 className="mt-5 text-3xl font-bold text-primary">
                   {guide.title}
                 </h3>
 
@@ -73,10 +81,18 @@ export function FeaturedGuides() {
                   {guide.description}
                 </p>
 
-                <div className="mt-8">
-                  <Button href={guide.href}>
-                    Read Guide
-                  </Button>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <a
+                    href={guide.file}
+                    download
+                    className="inline-flex items-center rounded-pill bg-primary px-6 py-3 font-semibold text-white transition hover:bg-primary/90"
+                  >
+                    📄 Download Guide
+                  </a>
+
+                  <span className="text-sm text-muted">
+                    Free • PDF • Printable
+                  </span>
                 </div>
               </div>
             </article>

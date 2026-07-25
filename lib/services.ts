@@ -82,8 +82,8 @@ export const SERVICES: Service[] = [
     title: "Clinical Care Services",
     shortDescription:
       "Skilled nursing support delivered at home, including monitoring, medication and wound care for complex health needs.",
-    heroImage: "/services/clinichero.png",
-    heroImage2: "/services/discharge-care.png",
+    heroImage2: "/services/clinicnew.jpeg",
+    heroImage: "/services/discharge-care.png",
     overview:
       "Our Clinical Care Services bring qualified nursing expertise into the home, supporting clients with ongoing medical needs. Care is delivered under the guidance of trained nurses and coordinated closely with your treating physician, so complex health conditions are managed safely without leaving the comfort of home.",
     includes: [
