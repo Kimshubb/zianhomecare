@@ -33,7 +33,7 @@ export function ServiceFAQ({ faqs }: ServiceFAQProps) {
             >
               <span className="text-lg font-semibold text-primary">
                 {faq.question}
-[?12;2$y              </span>
+              </span>
 
               <ChevronDown
                 className={`h-5 w-5 text-primary transition-transform duration-300 ${

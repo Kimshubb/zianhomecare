@@ -25,20 +25,21 @@ export const BLOG_CATEGORIES = [
     title: "Dementia Care",
     description:
       "Guidance for supporting loved ones with dementia.",
-    image: "/blog/categories/dementia.jpg",
+    image: "/blog/dementia-care.png",
   },
   {
     slug: "family-caregivers",
     title: "Family Caregivers",
     description:
       "Advice for balancing work, family and caregiving.",
-    image: "/blog/categories/family.jpg",
+    image: "/blog/family-caregivers.png",
   },
   {
     slug: "wellbeing",
     title: "Wellbeing",
     description:
       "Mental health, companionship and active ageing.",
-    image: "/blog/categories/wellbeing.jpg",
+    image: "/blog/wellbeing.png",
   },
 ] as const;
+

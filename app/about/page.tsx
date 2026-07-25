@@ -7,7 +7,6 @@ import {
   HeartHandshake,
   Globe2,
   Handshake,
-  Home,
   GraduationCap,
   ClipboardList,
   CalendarClock,
@@ -40,17 +39,20 @@ export default function AboutPage() {
           />
         </svg>
 
-        {/* Logo mark accent — hidden on mobile so it never overlaps text,
-            fully contained (not clipped) on larger screens, tonal not colorful */}
-        <Image
-          src="/logo-mark-silhouette.png"
-          alt=""
-          width={400}
-          height={388}
-          className="pointer-events-none absolute right-8 top-1/2 hidden -translate-y-1/2 opacity-[0.14] md:block md:h-[300px] md:w-[300px] lg:right-16 lg:h-[400px] lg:w-[400px]"
-        />
+        {/* Logo mark accent — sits centered behind the text on mobile (low
+            opacity so copy stays readable), shifts to a right-side accent
+            position from md up */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 opacity-[0.10] md:left-auto md:right-8 md:h-[300px] md:w-[300px] md:translate-x-0 md:opacity-[0.14] lg:right-16 lg:h-[400px] lg:w-[400px]">
+          <Image
+            src="/logo-mark-silhouette.png"
+            alt=""
+            fill
+            priority
+            className="object-contain"
+          />
+        </div>
 
-        <Container className="relative">
+        <Container className="relative z-10">
           <div className="max-w-xl py-20 lg:py-28">
             <span className="text-sm font-semibold uppercase tracking-widest text-accent">
               About Us
@@ -109,18 +111,14 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="flex aspect-square items-center justify-center rounded-card bg-secondary-soft">
-              <div className="text-center">
-                <Home
-                  size={64}
-                  strokeWidth={1.5}
-                  className="mx-auto text-primary"
-                />
-
-                <p className="mt-4 text-muted">
-                  Team photograph placeholder
-                </p>
-              </div>
+            <div className="relative aspect-square overflow-hidden rounded-card bg-surface">
+              <Image
+                src="/services/about.png"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain p-2"
+                alt="Zian SafeHarbour Care Commitment"
+              />
             </div>
           </div>
         </Container>

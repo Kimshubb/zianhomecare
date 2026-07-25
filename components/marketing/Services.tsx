@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -29,17 +30,16 @@ export function Services() {
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {SERVICES.map((service) => {
-            const Icon = service.icon;
-
             return (
               <article
                 key={service.title}
                 className="
+                  group
+                  overflow-hidden
                   rounded-card
                   border
                   border-border
                   bg-surface
-                  p-8
                   shadow-sm
                   transition-all
                   duration-300
@@ -47,24 +47,31 @@ export function Services() {
                   hover:shadow-lg
                 "
               >
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary-soft text-primary">
-                  <Icon className="h-6 w-6" />
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={service.heroImage}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
 
-                <h3 className="mb-3 text-xl font-semibold text-primary">
-                  {service.title}
-                </h3>
+                <div className="p-8">
+                  <h3 className="mb-3 text-xl font-semibold text-primary">
+                    {service.title}
+                  </h3>
 
-                <p className="leading-7 text-muted">
-                  {service.shortDescription}
-                </p>
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-primary"
-                >
-                  Learn more
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                  <p className="leading-7 text-muted">
+                    {service.shortDescription}
+                  </p>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-primary"
+                  >
+                    Learn more
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
               </article>
             );
           })}

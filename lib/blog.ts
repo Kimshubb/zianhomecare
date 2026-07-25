@@ -161,8 +161,8 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Practical adjustments that greatly improve safety.",
     image: "/services/falls.jpg",
     category: {
-      slug: "safety",
-      title: "Safety",
+      slug: "home-care",
+      title: "Home Care",
     },
     published: "2026-06-03",
     readTime: "7 min read",

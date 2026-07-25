@@ -5,25 +5,39 @@ import { Section } from "@/components/layout/Section";
 
 const GUIDES = [
   {
-    title: "The Complete Family Guide to Home Care",
+    title: "Clinical Care Services",
     description:
-      "Everything families need to know before arranging professional home care.",
-    image: "/blog/guides/family-guide.jpg",
-    file: "/guides/family-guide.pdf",
+      "Hospital-level nursing care at home — bringing professional healthcare to the comfort of home.",
+    image: "/blog/guides/clinical-care-services.jpg",
+    file: "/guides/zian-clinical-care-services.pdf",
   },
   {
-    title: "Preparing Your Home for Safe Independent Living",
+    title: "Specialized Care",
     description:
-      "Simple changes that improve comfort, accessibility and safety.",
-    image: "/blog/guides/home-safety.jpg",
-    file: "/guides/home-safety-guide.pdf",
+      "Personalized healthcare for complex needs — individualized support for chronic and advanced conditions.",
+    image: "/blog/guides/specialized-care.jpg",
+    file: "/guides/zian-specialized-care.pdf",
   },
   {
-    title: "Choosing the Right Home Care Provider",
+    title: "Stroke: Every Second Counts",
     description:
-      "Questions every family should ask before making an important decision.",
-    image: "/blog/guides/choosing-home-care.jpg",
-    file: "/guides/choosing-home-care-provider.pdf",
+      "Recognizing the signs, acting FAST, and understanding the path to rehabilitation.",
+    image: "/blog/guides/stroke-awareness.jpg",
+    file: "/guides/zian-stroke-awareness.pdf",
+  },
+  {
+    title: "Recovery and Therapy Support",
+    description:
+      "Restoring independence, rebuilding strength, and improving quality of life after illness or injury.",
+    image: "/blog/guides/recovery-therapy-support.jpg",
+    file: "/guides/zian-recovery-therapy-support.pdf",
+  },
+  {
+    title: "Nutrition and Healthy Meal Support",
+    description:
+      "Nourishing health, promoting recovery, and enhancing quality of life through individualized nutritional care.",
+    image: "/blog/guides/nutrition-meal-support.jpg",
+    file: "/guides/zian-nutrition-meal-support.pdf",
   },
 ];
 
