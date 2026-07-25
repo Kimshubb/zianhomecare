@@ -15,30 +15,37 @@ const GUIDES = [
     title: "Specialized Care",
     description:
       "Personalized healthcare for complex needs — individualized support for chronic and advanced conditions.",
-    image: "/blog/guides/specialized-care.jpg",
-    file: "/guides/zian-specialized-care.pdf",
+    image: "/services/palliative-care.png",
+    file: "/guides/Zian-Safe-Harbour-Care-Specialized-care.pdf",
   },
   {
     title: "Stroke: Every Second Counts",
     description:
       "Recognizing the signs, acting FAST, and understanding the path to rehabilitation.",
-    image: "/blog/guides/stroke-awareness.jpg",
-    file: "/guides/zian-stroke-awareness.pdf",
+    image: "/services/stroke.png",
+    file: "/guides/Zian-Safe-Harbour-Care-Stroke-Awareness.pdf",
   },
   {
     title: "Recovery and Therapy Support",
     description:
       "Restoring independence, rebuilding strength, and improving quality of life after illness or injury.",
-    image: "/blog/guides/recovery-therapy-support.jpg",
-    file: "/guides/zian-recovery-therapy-support.pdf",
+    image: "/services/physionew.jpeg",
+    file: "/guides/Zian-Safe-Harbour-Care-Recovery-Therapy-Support (1).pdf",
   },
   {
     title: "Nutrition and Healthy Meal Support",
     description:
       "Nourishing health, promoting recovery, and enhancing quality of life through individualized nutritional care.",
-    image: "/blog/guides/nutrition-meal-support.jpg",
-    file: "/guides/zian-nutrition-meal-support.pdf",
+    image: "/services/nutritionnew.jpeg",
+    file: "/guides/Zian-Safe-Harbour-Care-Nutrition-Meal-Support.pdf",
   },
+  {
+    title: "Clinical Care Services",
+    description:
+      "Hospital-level nursing care at home — bringing professional healthcare to the comfort of home.",
+    image: "/services/clinicnew.jpeg",
+    file: "/guides/Zian-Safe-Harbour-Care-Clinical-Nursing-Care.pdf",
+  }
 ];
 
 export function FeaturedGuides() {
