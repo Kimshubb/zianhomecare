@@ -7,6 +7,7 @@ import {
   AnimatePresence,
   motion,
   type PanInfo,
+  type Variants,
 } from "framer-motion";
 
 import { Button } from "@/components/ui/Button";
@@ -123,7 +124,7 @@ const SLIDES: Slide[] = [
 const AUTOPLAY = 10000;
 const DRAG_THRESHOLD = 80;
 
-const container = {
+const container: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -132,7 +133,7 @@ const container = {
   },
 };
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
@@ -148,7 +149,7 @@ const fadeUp = {
   },
 };
 
-const badgeReveal = {
+const badgeReveal: Variants = {
   hidden: {
     opacity: 0,
     x: -24,
@@ -165,7 +166,7 @@ const badgeReveal = {
   },
 };
 
-const cardReveal = {
+const cardReveal: Variants = {
   hidden: {
     opacity: 0,
     y: 26,
@@ -184,7 +185,7 @@ const cardReveal = {
   },
 };
 
-const textReveal = {
+const textReveal: Variants = {
   hidden: {
     opacity: 0,
     y: 10,
