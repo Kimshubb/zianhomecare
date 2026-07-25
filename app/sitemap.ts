@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 import { BLOG_POSTS } from "@/lib/blog";
 import { SERVICES } from "@/lib/services";
 
-const BASE_URL = "https://ziansafeharbour.com";
+const BASE_URL = "https://ziansafeharbourcare.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-[?12;2$y      url: `${BASE_URL}/contact`,
+    url: `${BASE_URL}/contact`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
