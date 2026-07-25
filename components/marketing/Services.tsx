@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 
@@ -56,6 +58,13 @@ export function Services() {
                 <p className="leading-7 text-muted">
                   {service.shortDescription}
                 </p>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-primary"
+                >
+                  Learn more
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
               </article>
             );
           })}

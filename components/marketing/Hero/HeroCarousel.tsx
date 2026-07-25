@@ -321,7 +321,7 @@ export function HeroCarousel() {
 
             {/* Logo */}
 
-            <div className="absolute left-8 top-8 z-20">
+            <div className="absolute right-8 top-8 z-20">
 
               <Image
                 src="/full-logozian.png"
