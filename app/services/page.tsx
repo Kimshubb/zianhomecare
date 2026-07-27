@@ -1,8 +1,11 @@
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { EmergencyCTA } from "@/components/marketing/sections/EmergencyCTA";
-import Link from "next/link";
 
 import { SERVICES } from "@/lib/services";
 
@@ -49,33 +52,45 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {SERVICES.map((service) => (
               <Link
-                key={service.title}
+                key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group block rounded-card bg-secondary-soft p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
+                className="group overflow-hidden rounded-card border border-border bg-surface shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-primary">
-                  {service.title}
-                </h3>
+                {/* Service Name */}
 
-                <div className="mt-5 flex h-40 items-center justify-center rounded-card bg-surface transition-colors duration-300 group-hover:bg-primary/5">
-                  <service.icon
-                    size={56}
-                    strokeWidth={1.5}
-                    className="text-primary transition-transform duration-300 group-hover:scale-110"
-                  />
+                <div className="px-6 pt-6">
+                  <h3 className="text-2xl font-bold leading-tight text-primary">
+                    {service.title}
+                  </h3>
                 </div>
 
-                <p className="mt-5 leading-7 text-muted">
-                  {service.shortDescription}
-                </p>
-                <div className="mt-6 flex items-center font-semibold text-primary">
-                  Learn more
-                  <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
+                {/* Service Image */}
+
+                <div className="relative mt-5 h-56 overflow-hidden">
+                  <Image
+                    src={service.heroImage}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+                </div>
+
+                {/* Description */}
+
+                <div className="p-6">
+                  <p className="line-clamp-3 leading-7 text-muted">
+                    {service.shortDescription}
+                  </p>
+
+                  <div className="mt-6 inline-flex items-center gap-2 font-semibold text-primary transition-all duration-300 group-hover:gap-3">
+                    Learn More
+                    <ArrowRight className="h-4 w-4" />
+                  </div>
                 </div>
               </Link>
             ))}
@@ -108,24 +123,24 @@ export default function ServicesPage() {
                 step: "1",
                 title: "Initial Consultation",
                 description:
-                  "Talk to our team about your needs and ask any questions.",
+                  "Talk to our team about your needs, ask questions, and discuss the type of support you're looking for.",
               },
               {
                 step: "2",
-                title: "Care Assessment",
+                title: "Personalised Care Plan",
                 description:
-                  "Together we'll develop a personalised care plan that fits your circumstances.",
+                  "We carry out a detailed assessment and create a care plan tailored to your individual needs and goals.",
               },
               {
                 step: "3",
                 title: "Care Begins",
                 description:
-                  "Your dedicated caregiver starts providing compassionate support at home.",
+                  "Your dedicated caregiver starts providing compassionate, reliable support while keeping your family informed.",
               },
             ].map((item) => (
               <article
                 key={item.step}
-                className="rounded-card bg-surface p-8 text-center shadow-sm"
+                className="rounded-card bg-surface p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent text-lg font-bold text-white">
                   {item.step}
