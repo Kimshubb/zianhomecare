@@ -8,8 +8,8 @@ const GUIDES = [
     title: "Clinical Care Services",
     description:
       "Hospital-level nursing care at home — bringing professional healthcare to the comfort of home.",
-    image: "/blog/guides/clinical-care-services.jpg",
-    file: "/guides/zian-clinical-care-services.pdf",
+    image: "/blog/guides/clinic-new.jpeg",
+    file: "/guides/Zian-Safe-Harbour-Care-Clinical-Nursing-Care (8).pdf",
   },
   {
     title: "Specialized Care",
@@ -105,10 +105,11 @@ export function FeaturedGuides() {
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <a
                     href={guide.file}
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center rounded-pill bg-primary px-6 py-3 font-semibold text-white transition hover:bg-primary/90"
                   >
-                    📄 Download Guide
+                    📄 View & Download Guide
                   </a>
 
                   <span className="text-sm text-muted">
