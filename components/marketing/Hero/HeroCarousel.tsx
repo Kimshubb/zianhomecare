@@ -22,19 +22,12 @@ type SlideType =
 
 interface Slide {
   type: SlideType;
-
   image: string;
-
   alt: string;
-
   title: string;
-
   subtitle?: string;
-
   number?: string;
-
   isVortex?: boolean;
-
   position?: "tl" | "tr" | "bl" | "br";
 }
 
@@ -44,10 +37,8 @@ const SLIDES: Slide[] = [
     image: "/hero/carousel-1.png",
     alt: "Caregiver with elderly client",
     title: "Care is at the heart of everything we do.",
-    subtitle:
-      "Real support, for every stage of the journey.",
+    subtitle: "Real support, for every stage of the journey.",
   },
-
   {
     type: "mission",
     image: "/hero/carousel-2.png",
@@ -56,7 +47,6 @@ const SLIDES: Slide[] = [
     subtitle:
       "Professional care built around dignity, compassion and trust.",
   },
-
   {
     type: "service",
     image: "/hero/carouselmain.png",
@@ -67,7 +57,6 @@ const SLIDES: Slide[] = [
     number: "01",
     position: "br",
   },
-
   {
     type: "service",
     image: "/hero/carousel-1.png",
@@ -78,7 +67,6 @@ const SLIDES: Slide[] = [
     number: "02",
     position: "br",
   },
-
   {
     type: "service",
     image: "/hero/carousel-2.png",
@@ -89,7 +77,6 @@ const SLIDES: Slide[] = [
     number: "03",
     position: "br",
   },
-
   {
     type: "service",
     image: "/hero/carouselmain.png",
@@ -101,7 +88,6 @@ const SLIDES: Slide[] = [
     position: "br",
     isVortex: true,
   },
-
   {
     type: "summary",
     image: "/hero/carousel-1.png",
@@ -110,7 +96,6 @@ const SLIDES: Slide[] = [
     subtitle:
       "From the first cup of tea in the morning to the medication reminder at night, every visit is centred around dignity, comfort and independence.",
   },
-
   {
     type: "contact",
     image: "/hero/carousel-2.png",
@@ -134,78 +119,73 @@ const container: Variants = {
 };
 
 const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
-
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 const badgeReveal: Variants = {
-  hidden: {
-    opacity: 0,
-    x: -24,
-  },
-
+  hidden: { opacity: 0, x: -24 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.55,
-      delay: 0.1,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    transition: { duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
 const cardReveal: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 26,
-    scale: 0.98,
-  },
-
+  hidden: { opacity: 0, y: 26, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: {
-      duration: 0.7,
-      delay: 0.4,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 const textReveal: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 10,
-  },
-
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.5,
-      delay: 0.7,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.5, delay: 0.7, ease: "easeOut" },
   },
 };
 
 export function HeroCarousel() {
   const [index, setIndex] = useState(0);
-
   const [paused, setPaused] = useState(false);
+
+  // Mobile viewport + reduced-motion detection, used to scale back
+  // continuous background/parallax animation cost on phones and for
+  // users who've asked the OS to minimize motion.
+  const [isMobile, setIsMobile] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const widthQuery = window.matchMedia("(max-width: 640px)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    setIsMobile(widthQuery.matches);
+    setReducedMotion(motionQuery.matches);
+
+    const widthHandler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    const motionHandler = (e: MediaQueryListEvent) =>
+      setReducedMotion(e.matches);
+
+    widthQuery.addEventListener("change", widthHandler);
+    motionQuery.addEventListener("change", motionHandler);
+
+    return () => {
+      widthQuery.removeEventListener("change", widthHandler);
+      motionQuery.removeEventListener("change", motionHandler);
+    };
+  }, []);
+
+  const skipAmbientMotion = isMobile || reducedMotion;
 
   useEffect(() => {
     if (paused) return;
@@ -217,10 +197,7 @@ export function HeroCarousel() {
     return () => clearInterval(timer);
   }, [paused]);
 
-  function handleDragEnd(
-    _: unknown,
-    info: PanInfo
-  ) {
+  function handleDragEnd(_: unknown, info: PanInfo) {
     if (info.offset.x < -DRAG_THRESHOLD) {
       setIndex((prev) => (prev + 1) % SLIDES.length);
     }
@@ -238,24 +215,20 @@ export function HeroCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="relative aspect-[4/5] overflow-hidden rounded-card shadow-card">
-
+      <div className="relative aspect-[3/4] overflow-hidden rounded-card shadow-card sm:aspect-[4/5]">
         <AnimatePresence mode="wait">
-
           <motion.div
             key={index}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.18}
             onDragEnd={handleDragEnd}
-            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+            className="absolute inset-0 cursor-grab touch-pan-y active:cursor-grabbing"
             initial={{
               opacity: 0,
               scale: slide.isVortex ? 1.2 : 1.05,
               rotate: slide.isVortex ? 2 : 0,
-              filter: slide.isVortex
-                ? "blur(10px)"
-                : "blur(0px)",
+              filter: slide.isVortex ? "blur(10px)" : "blur(0px)",
             }}
             animate={{
               opacity: 1,
@@ -266,26 +239,20 @@ export function HeroCarousel() {
             exit={{
               opacity: 0,
               scale: slide.isVortex ? 0.9 : 1.02,
-              filter: slide.isVortex
-                ? "blur(12px)"
-                : "blur(0px)",
+              filter: slide.isVortex ? "blur(12px)" : "blur(0px)",
             }}
             transition={{
-              duration: slide.isVortex ? 1.4 : 0.9,
+              duration: reducedMotion ? 0.3 : slide.isVortex ? 1.4 : 0.9,
             }}
           >
             {/* Background */}
-
             <motion.div
-              animate={{
-                scale: [1, 1.08],
-                x: [0, -8],
-                y: [0, -6],
-              }}
-              transition={{
-                duration: AUTOPLAY / 1000,
-                ease: "linear",
-              }}
+              animate={
+                skipAmbientMotion
+                  ? undefined
+                  : { scale: [1, 1.08], x: [0, -8], y: [0, -6] }
+              }
+              transition={{ duration: AUTOPLAY / 1000, ease: "linear" }}
               className="absolute inset-0"
             >
               <Image
@@ -299,17 +266,13 @@ export function HeroCarousel() {
             </motion.div>
 
             {/* Overlay */}
-
             <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/50 to-primary/90" />
-
             <div className="absolute inset-0 bg-black/10" />
 
             {/* Vignette */}
-
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_45%,_rgba(0,0,0,0.5)_100%)]" />
 
             {/* Film grain */}
-
             <div
               className="pointer-events-none absolute inset-0 opacity-[0.07] mix-blend-overlay"
               style={{
@@ -320,240 +283,222 @@ export function HeroCarousel() {
             />
 
             {/* Logo */}
-
-            <div className="absolute right-8 top-8 z-20">
-
+            <div className="absolute right-4 top-4 z-20 sm:right-8 sm:top-8">
               <Image
                 src="/full-logozian.png"
                 alt="Zian SafeHarbour Care"
                 width={130}
                 height={130}
-                className="h-20 w-auto drop-shadow-xl"
+                className="h-12 w-auto drop-shadow-xl sm:h-16 lg:h-20"
               />
-
             </div>
 
-            {/* Content (parallax layer — drifts opposite the background pan) */}
-
+            {/* Content (parallax layer) */}
             <motion.div
-              animate={{
-                x: [0, 5],
-                y: [0, 4],
-              }}
-              transition={{
-                duration: AUTOPLAY / 1000,
-                ease: "linear",
-              }}
+              animate={skipAmbientMotion ? undefined : { x: [0, 5], y: [0, 4] }}
+              transition={{ duration: AUTOPLAY / 1000, ease: "linear" }}
               className="absolute inset-0 z-20"
             >
-            <motion.div
-              variants={container}
-              initial="hidden"
-              animate="visible"
-              className="absolute inset-0"
-            >  
-              {/* INTRO */}
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate="visible"
+                className="absolute inset-0"
+              >
+                {/* INTRO */}
+                {slide.type === "intro_card" && (
+                  <div className="flex h-full items-end p-5 sm:p-8 lg:p-12">
+                    <motion.div
+                      variants={fadeUp}
+                      className="max-w-lg rounded-card bg-primary/60 p-5 backdrop-blur-md sm:p-8"
+                    >
+                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm sm:tracking-[0.25em]">
+                        Zian SafeHarbour Care
+                      </span>
 
-              {slide.type === "intro_card" && (
-                <div className="flex h-full items-end p-10 lg:p-12">
-                  <motion.div
-                    variants={fadeUp}
-                    className="max-w-lg rounded-card bg-primary/60 p-8 backdrop-blur-md"
+                      <h2 className="mt-3 text-2xl font-bold leading-tight text-white sm:mt-4 sm:text-4xl lg:text-5xl">
+                        {slide.title}
+                      </h2>
+
+                      <p className="mt-3 text-base leading-7 text-white/90 sm:mt-5 sm:text-lg sm:leading-8">
+                        {slide.subtitle}
+                      </p>
+                    </motion.div>
+                  </div>
+                )}
+
+                {/* MISSION */}
+                {slide.type === "mission" && (
+                  <div className="flex h-full items-center justify-center px-5 sm:px-8">
+                    <motion.article
+                      variants={fadeUp}
+                      className="max-w-xl rounded-card bg-surface/90 p-5 shadow-2xl backdrop-blur-md sm:p-10 sm:backdrop-blur-xl"
+                    >
+                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent sm:text-sm sm:tracking-[0.25em]">
+                        Our Mission
+                      </span>
+
+                      <h2 className="mt-3 text-2xl font-bold leading-tight text-primary sm:mt-5 sm:text-4xl">
+                        {slide.title}
+                      </h2>
+
+                      <p className="mt-3 text-base leading-7 text-muted sm:mt-6 sm:text-lg sm:leading-8">
+                        {slide.subtitle}
+                      </p>
+
+                      <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
+                        {["Professional", "Compassionate", "Trusted"].map(
+                          (item) => (
+                            <span
+                              key={item}
+                              className="rounded-full bg-secondary-soft px-3 py-1.5 text-xs font-semibold text-primary sm:px-4 sm:py-2 sm:text-sm"
+                            >
+                              {item}
+                            </span>
+                          )
+                        )}
+                      </div>
+                    </motion.article>
+                  </div>
+                )}
+
+                {/* SERVICE */}
+                {slide.type === "service" && (
+                  <div
+                    className={cn(
+                      "absolute inset-0 flex p-5 sm:p-8 lg:p-12",
+                      slide.position === "bl" && "items-end justify-start",
+                      slide.position === "br" && "items-end justify-end",
+                      slide.position === "tl" && "items-start justify-start",
+                      slide.position === "tr" && "items-start justify-end"
+                    )}
                   >
-                    <span className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-                      Zian SafeHarbour Care
-                    </span>
-
-                    <h2 className="mt-4 text-4xl font-bold leading-tight text-white lg:text-5xl">
-                      {slide.title}
-                    </h2>
-
-                    <p className="mt-5 text-lg leading-8 text-white/90">
-                      {slide.subtitle}
-                    </p>
-                  </motion.div>
-                </div>
-              )}
-
-              {/* MISSION */}
-
-              {slide.type === "mission" && (
-                <div className="flex h-full items-center justify-center px-8">
-                  <motion.article
-                    variants={fadeUp}
-                    className="max-w-xl rounded-card bg-surface/90 p-10 shadow-2xl backdrop-blur-xl"
-                  >
-                    <span className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-                      Our Mission
-                    </span>
-
-                    <h2 className="mt-5 text-4xl font-bold leading-tight text-primary">
-                      {slide.title}
-                    </h2>
-
-                    <p className="mt-6 text-lg leading-8 text-muted">
-                      {slide.subtitle}
-                    </p>
-
-                    <div className="mt-8 flex gap-3 flex-wrap">
-                      {["Professional", "Compassionate", "Trusted"].map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full bg-secondary-soft px-4 py-2 text-sm font-semibold text-primary"
+                    <motion.div
+                      animate={
+                        skipAmbientMotion
+                          ? undefined
+                          : { y: [0, -6, 0] }
+                      }
+                      transition={{
+                        y: {
+                          duration: 5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 1.2,
+                        },
+                      }}
+                      className="max-w-[calc(100vw-2.5rem)] sm:max-w-md"
+                    >
+                      <motion.div initial="hidden" animate="visible">
+                        {/* Badge — lower-third style */}
+                        <motion.div
+                          variants={badgeReveal}
+                          className="inline-flex items-stretch overflow-hidden rounded-xl border border-white/20 bg-black/30 shadow-2xl backdrop-blur-md"
                         >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.article>
-                </div>
-              )}
+                          <div className="flex items-center bg-accent px-3 sm:px-5">
+                            <span className="text-xl font-black text-white sm:text-3xl">
+                              {slide.number}
+                            </span>
+                          </div>
 
-              {/* SERVICE */}
+                          <div className="flex flex-col justify-center gap-0.5 px-3 py-2 sm:px-5 sm:py-3">
+                            <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-accent sm:text-[10px] sm:tracking-[0.3em]">
+                              Service
+                            </span>
+                            <span className="text-base font-bold leading-snug tracking-wide text-white sm:text-lg">
+                              {slide.title}
+                            </span>
+                          </div>
+                        </motion.div>
 
-              {slide.type === "service" && (
-                <div
-                  className={cn(
-                    "absolute inset-0 flex p-10 lg:p-12",
-
-                    slide.position === "bl" && "items-end justify-start",
-
-                    slide.position === "br" && "items-end justify-end",
-
-                    slide.position === "tl" && "items-start justify-start",
-
-                    slide.position === "tr" && "items-start justify-end"
-                  )}
-                >
-                  <motion.div
-                    animate={{
-                      y: [0, -6, 0],
-                    }}
-                    transition={{
-                      y: {
-                        duration: 5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: 1.2,
-                      },
-                    }}
-                    className="max-w-md"
-                  >
-                    <motion.div initial="hidden" animate="visible">
-
-                      {/* Badge — lower-third style */}
-
-                      <motion.div
-                        variants={badgeReveal}
-                        className="inline-flex items-stretch overflow-hidden rounded-xl border border-white/20 bg-black/30 shadow-2xl backdrop-blur-md"
-                      >
-                        <div className="flex items-center bg-accent px-5">
-                          <span className="text-3xl font-black text-white">
-                            {slide.number}
-                          </span>
-                        </div>
-
-                        <div className="flex flex-col justify-center gap-0.5 px-5 py-3">
-                          <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-accent">
-                            Service
-                          </span>
-                          <span className="text-lg font-bold leading-snug tracking-wide text-white">
-                            {slide.title}
-                          </span>
-                        </div>
-                      </motion.div>
-
-                      {/* Glass Card */}
-
-                      <motion.div
-                        variants={cardReveal}
-                        className="mt-5 rounded-card border border-white/15 bg-white/8 p-7 backdrop-blur-xl"
-                      >
-                        <motion.p
-                          variants={textReveal}
-                          className="text-lg leading-8 text-white"
+                        {/* Glass Card */}
+                        <motion.div
+                          variants={cardReveal}
+                          className="mt-4 rounded-card border border-white/15 bg-white/8 p-4 backdrop-blur-md sm:mt-5 sm:p-7 sm:backdrop-blur-xl"
                         >
-                          {slide.subtitle}
-                        </motion.p>
+                          <motion.p
+                            variants={textReveal}
+                            className="text-base leading-7 text-white sm:text-lg sm:leading-8"
+                          >
+                            {slide.subtitle}
+                          </motion.p>
+                        </motion.div>
                       </motion.div>
                     </motion.div>
-                  </motion.div>
-                </div>
-              )}
+                  </div>
+                )}
 
-              {/* SUMMARY */}
+                {/* SUMMARY */}
+                {slide.type === "summary" && (
+                  <div className="flex h-full items-end justify-center p-5 sm:p-10">
+                    <motion.article
+                      variants={fadeUp}
+                      className="max-w-2xl rounded-card bg-surface/90 p-5 text-center shadow-xl backdrop-blur-md sm:p-10 sm:backdrop-blur-xl"
+                    >
+                      <h2 className="text-2xl font-bold text-primary sm:text-4xl">
+                        {slide.title}
+                      </h2>
 
-              {slide.type === "summary" && (
-                <div className="flex h-full items-end justify-center p-10">
-                  <motion.article
-                    variants={fadeUp}
-                    className="max-w-2xl rounded-card bg-surface/90 p-10 text-center shadow-xl backdrop-blur-xl"
-                  >
-                    <h2 className="text-4xl font-bold text-primary">
-                      {slide.title}
-                    </h2>
+                      <p className="mt-3 text-base leading-7 text-muted sm:mt-6 sm:text-lg sm:leading-8">
+                        {slide.subtitle}
+                      </p>
+                    </motion.article>
+                  </div>
+                )}
 
-                    <p className="mt-6 text-lg leading-8 text-muted">
-                      {slide.subtitle}
-                    </p>
-                  </motion.article>
-                </div>
-              )}
+                {/* CONTACT */}
+                {slide.type === "contact" && (
+                  <div className="flex h-full items-center justify-center px-5 sm:px-8">
+                    <motion.article
+                      variants={fadeUp}
+                      className="max-w-lg rounded-card bg-primary/80 p-5 text-center backdrop-blur-md sm:p-10 sm:backdrop-blur-xl"
+                    >
+                      <h2 className="text-2xl font-bold leading-tight text-white sm:text-4xl">
+                        {slide.title}
+                      </h2>
 
-              {/* CONTACT */}
+                      <p className="mt-3 text-base leading-7 text-white/90 sm:mt-6 sm:text-lg sm:leading-8">
+                        {slide.subtitle}
+                      </p>
 
-              {slide.type === "contact" && (
-                <div className="flex h-full items-center justify-center px-8">
-                  <motion.article
-                    variants={fadeUp}
-                    className="max-w-lg rounded-card bg-primary/80 p-10 text-center backdrop-blur-xl"
-                  >
-                    <h2 className="text-4xl font-bold leading-tight text-white">
-                      {slide.title}
-                    </h2>
+                      <div className="mt-5 sm:mt-8">
+                        <Button href="/contact" size="lg">
+                          Book a Consultation
+                        </Button>
+                      </div>
 
-                    <p className="mt-6 text-lg leading-8 text-white/90">
-                      {slide.subtitle}
-                    </p>
-
-                    <div className="mt-8">
-                      <Button
-                        href="/contact"
-                        size="lg"
-                      >
-                        Book a Consultation
-                      </Button>
-                    </div>
-
-                    <div className="mt-8 space-y-2 text-white/80">
-                      <p>📞 +254 790 174 570</p>
-                      <p>💬 WhatsApp Available</p>
-                      <p>✉ info@ziansafeharbour.com</p>
-                      <p>🌐 www.ziansafeharbour.com</p>
-                    </div>
-                  </motion.article>
-                </div>
-              )}
-            </motion.div>
+                      <div className="mt-5 space-y-1.5 text-sm text-white/80 sm:mt-8 sm:space-y-2 sm:text-base">
+                        <p>📞 +254 790 174 570</p>
+                        <p>💬 WhatsApp Available</p>
+                        <p>✉ info@ziansafeharbour.com</p>
+                        <p>🌐 www.ziansafeharbour.com</p>
+                      </div>
+                    </motion.article>
+                  </div>
+                )}
+              </motion.div>
             </motion.div>
           </motion.div>
         </AnimatePresence>
 
         {/* Navigation */}
-
-        <div className="absolute bottom-6 left-1/2 z-30 flex -translate-x-1/2 gap-2 rounded-full bg-white/15 px-4 py-2 backdrop-blur-xl">
+        <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 gap-1 rounded-full bg-white/15 px-3 py-1.5 backdrop-blur-xl sm:bottom-6 sm:gap-2 sm:px-4 sm:py-2">
           {SLIDES.map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
               aria-label={`Slide ${i + 1}`}
-              className={cn(
-                "h-2 rounded-full transition-all duration-500",
-                index === i
-                  ? "w-8 bg-accent"
-                  : "w-2 bg-white/60 hover:bg-white"
-              )}
-            />
+              className="-m-2 flex items-center justify-center p-2"
+            >
+              <span
+                className={cn(
+                  "block h-2 rounded-full transition-all duration-500",
+                  index === i
+                    ? "w-6 bg-accent sm:w-8"
+                    : "w-1.5 bg-white/60 hover:bg-white sm:w-2"
+                )}
+              />
+            </button>
           ))}
         </div>
       </div>
