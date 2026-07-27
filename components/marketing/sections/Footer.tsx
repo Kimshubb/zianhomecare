@@ -84,7 +84,7 @@ export function Footer() {
 
               <div className="flex gap-3">
                 <a
-                  href="https://facebook.com/yourpage"
+                  href="https://www.facebook.com/yourpage"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
@@ -94,7 +94,7 @@ export function Footer() {
                 </a>
 
                 <a
-                  href="https://tiktok.com/@youraccount"
+                  href="https://www.tiktok.com/@ziancareelderlyservices"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok"

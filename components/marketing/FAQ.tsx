@@ -29,7 +29,7 @@ const FAQS = [
   {
     question: "What services do you offer?",
     answer:
-      "We provide personal care, medication support, companionship, transportation assistance, meal preparation and respite care.",
+      "We provide personal & daily care, clinical care services, recovery and therapy support as well as specialized care.",
   },
   {
     question: "How do I get started?",

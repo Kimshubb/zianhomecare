@@ -33,7 +33,7 @@ export function HeroContent() {
       {/* CTA */}
 
       <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
-        <Button size="lg" className="w-full sm:w-auto">
+        <Button href="/contact" size="lg" className="w-full sm:w-auto">
           Schedule a Consultation
         </Button>
 

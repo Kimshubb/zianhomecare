@@ -146,7 +146,7 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="mt-3 inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-neutral-800"
                   >
-                    <FaTiktok className="h-4 w-4" />
+                    <FaTiktok className="h-4 w-4 !text-white" />
                     Follow us on TikTok
                   </a>
                   <a
@@ -213,7 +213,7 @@ export function ContactSection() {
 
                 <input
                   type="email"
-                  placeholder="info@ziansafeharbour.com"
+                  placeholder="ziancare2026@gmail.com"
                   className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
                 />
               </div>
