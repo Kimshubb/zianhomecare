@@ -74,13 +74,11 @@ export function ServiceExperience({
                 key={item.title}
                 className="
                   group
-                  flex
-                  flex-col
-                  rounded-3xl
+                  overflow-hidden
+                  rounded-card
                   border
                   border-border
                   bg-surface
-                  p-6
                   shadow-sm
                   transition-all
                   duration-300
@@ -88,32 +86,34 @@ export function ServiceExperience({
                   hover:shadow-xl
                 "
               >
-                <h3 className="text-center text-xl font-semibold text-primary">
-                  {item.title}
-                </h3>
+                {/* Title */}
 
-                <div className="my-6 flex justify-center">
+                <div className="px-6 pt-6">
+                  <h3 className="text-xl font-bold leading-tight text-primary">
+                    {item.title}
+                  </h3>
+                </div>
+
+                {/* Image */}
+
+                <div className="relative mt-5 h-52 overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={160}
-                    height={160}
-                    className="
-                      h-36
-                      w-36
-                      rounded-full
-                      object-cover
-                      shadow-md
-                      transition-transform
-                      duration-300
-                      group-hover:scale-105
-                    "
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
                 </div>
 
-                <p className="flex-1 text-center leading-7 text-muted">
-                  {item.description}
-                </p>
+                {/* Description */}
+
+                <div className="p-6">
+                  <p className="line-clamp-4 leading-7 text-muted">
+                    {item.description}
+                  </p>
+                </div>
               </article>
             ))}
           </div>

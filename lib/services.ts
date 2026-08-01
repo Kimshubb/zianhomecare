@@ -83,7 +83,7 @@ export const SERVICES: Service[] = [
     shortDescription:
       "Skilled nursing support delivered at home, including monitoring, medication and wound care for complex health needs.",
     heroImage2: "/services/clinicnew.jpeg",
-    heroImage: "/services/discharge-care.png",
+    heroImage: "/services/hospital.jpeg",
     overview:
       "Our Clinical Care Services bring qualified nursing expertise into the home, supporting clients with ongoing medical needs. Care is delivered under the guidance of trained nurses and coordinated closely with your treating physician, so complex health conditions are managed safely without leaving the comfort of home.",
     includes: [
@@ -150,7 +150,7 @@ export const SERVICES: Service[] = [
     title: "Recovery & Therapy Support",
     shortDescription:
       "Physiotherapy and occupational therapy support that helps clients regain strength, mobility and everyday independence.",
-    heroImage: "/services/feed-tubing.png",
+    heroImage: "/services/physionew.jpeg",
     heroImage2: "/services/personal-care.png",
     overview:
       "Our Recovery & Therapy Support service helps clients rebuild strength and confidence after illness, injury or surgery. We work alongside physiotherapists and occupational therapists to support recovery goals in the comfort of home, keeping families informed of progress along the way.",
@@ -225,25 +225,25 @@ export const SERVICES: Service[] = [
       },
       {
         title: "Pain & Symptom Management",
-        image: "/services/pain-management.png",
+        image: "/services/pain-new.jpeg",
         description:
           "Attentive support managing pain and symptoms in coordination with medical guidance.",
       },
       {
         title: "Post-Hospital Discharge Care",
-        image: "/services/discharge-care.png",
+        image: "/services/discharge-new.jpeg",
         description:
           "Monitoring and support during the transition from hospital back to a safe home environment.",
       },
       {
         title: "Emotional Support",
-        image: "/services/emotional-support.png",
+        image: "/services/emotional-new.jpeg",
         description:
           "Compassionate emotional support for clients and their families through difficult stages of care.",
       },
       {
         title: "Hospital & Hospice Coordination",
-        image: "/services/hospital-coordination.png",
+        image: "/services/hospital.jpeg",
         description:
           "Close coordination with hospital and hospice teams to ensure consistent, joined-up care.",
       },

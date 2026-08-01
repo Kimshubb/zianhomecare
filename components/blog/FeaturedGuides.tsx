@@ -8,7 +8,7 @@ const GUIDES = [
     title: "Clinical Care Services",
     description:
       "Hospital-level nursing care at home — bringing professional healthcare to the comfort of home.",
-    image: "/blog/guides/clinic-new.jpeg",
+    image: "/services/hospital.jpeg",
     file: "/guides/Zian-Safe-Harbour-Care-Clinical-Nursing-Care (8).pdf",
   },
   {
@@ -39,13 +39,6 @@ const GUIDES = [
     image: "/services/nutritionnew.jpeg",
     file: "/guides/Zian-Safe-Harbour-Care-Nutrition-Meal-Support.pdf",
   },
-  {
-    title: "Clinical Care Services",
-    description:
-      "Hospital-level nursing care at home — bringing professional healthcare to the comfort of home.",
-    image: "/services/clinicnew.jpeg",
-    file: "/guides/Zian-Safe-Harbour-Care-Clinical-Nursing-Care.pdf",
-  }
 ];
 
 export function FeaturedGuides() {
