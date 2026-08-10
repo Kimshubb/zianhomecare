@@ -159,11 +159,23 @@ export function HeroCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
+  // Tracks whether we've completed the very first client render.
+  // Slide 0 (the initial hero content, which is also your LCP element)
+  // must paint at full opacity immediately, with no invisible entrance
+  // animation, or FCP/LCP can't fire until JS hydrates and Framer Motion
+  // runs. Every slide transition AFTER this first paint still animates
+  // in normally.
+  const [hasMounted, setHasMounted] = useState(false);
+
   // Mobile viewport + reduced-motion detection, used to scale back
   // continuous background/parallax animation cost on phones and for
   // users who've asked the OS to minimize motion.
   const [isMobile, setIsMobile] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     const widthQuery = window.matchMedia("(max-width: 640px)");
@@ -209,6 +221,26 @@ export function HeroCarousel() {
 
   const slide = SLIDES[index];
 
+  // On the very first paint (SSR + first client render), skip the
+  // "enter from invisible" state entirely — render already-visible.
+  // `initial={false}` tells Framer Motion to treat the `animate` values
+  // as the starting values, so there's no opacity:0 frame in the HTML
+  // Chrome sees. Once mounted, subsequent slide changes use the real
+  // `initial` object below and animate in as before.
+  const outerInitial = !hasMounted
+    ? false
+    : {
+        opacity: 0,
+        scale: slide.isVortex ? 1.2 : 1.05,
+        rotate: slide.isVortex ? 2 : 0,
+        filter: slide.isVortex ? "blur(10px)" : "blur(0px)",
+      };
+
+  // Same idea for the staggered content block (headline/subtitle/badges).
+  // Framer's `container`/`fadeUp`/etc. variants define a "hidden" state
+  // that would otherwise also paint as invisible on first load.
+  const contentInitial = hasMounted ? "hidden" : "visible";
+
   return (
     <div
       className="relative"
@@ -224,12 +256,7 @@ export function HeroCarousel() {
             dragElastic={0.18}
             onDragEnd={handleDragEnd}
             className="absolute inset-0 cursor-grab touch-pan-y active:cursor-grabbing"
-            initial={{
-              opacity: 0,
-              scale: slide.isVortex ? 1.2 : 1.05,
-              rotate: slide.isVortex ? 2 : 0,
-              filter: slide.isVortex ? "blur(10px)" : "blur(0px)",
-            }}
+            initial={outerInitial}
             animate={{
               opacity: 1,
               scale: 1,
@@ -301,7 +328,7 @@ export function HeroCarousel() {
             >
               <motion.div
                 variants={container}
-                initial="hidden"
+                initial={contentInitial}
                 animate="visible"
                 className="absolute inset-0"
               >
@@ -389,7 +416,7 @@ export function HeroCarousel() {
                       }}
                       className="max-w-[calc(100vw-2.5rem)] sm:max-w-md"
                     >
-                      <motion.div initial="hidden" animate="visible">
+                      <motion.div initial={contentInitial} animate="visible">
                         {/* Badge — lower-third style */}
                         <motion.div
                           variants={badgeReveal}

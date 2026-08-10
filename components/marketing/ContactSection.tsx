@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
 import {
   Phone,
   MessageCircle,
@@ -12,10 +14,49 @@ import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 
 export function ContactSection() {
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setStatus("sending");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          phone: formData.get("phone"),
+          email: formData.get("email"),
+          service: formData.get("service"),
+          message: formData.get("message"),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch (error) {
+      console.error("Contact form submission failed:", error);
+      setStatus("error");
+    }
+  }
+
   return (
-    <Section id="contact-form">
+    <Section>
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid gap-10 lg:grid-cols-2">
           {/* Left Side */}
 
           <article className="rounded-card bg-secondary-soft p-8">
@@ -36,7 +77,7 @@ export function ContactSection() {
               {/* Phone */}
 
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-white">
                   <Phone className="h-5 w-5" />
                 </div>
 
@@ -61,7 +102,7 @@ export function ContactSection() {
               {/* WhatsApp */}
 
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white">
                   <MessageCircle className="h-5 w-5" />
                 </div>
 
@@ -88,7 +129,7 @@ export function ContactSection() {
               {/* Email */}
 
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-white">
                   <Mail className="h-5 w-5" />
                 </div>
 
@@ -109,7 +150,7 @@ export function ContactSection() {
               {/* Office Hours */}
 
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white">
                   <Clock3 className="h-5 w-5" />
                 </div>
 
@@ -131,7 +172,7 @@ export function ContactSection() {
               {/* Connect With Us */}
 
               <div className="flex gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white">
                   <FaTiktok className="h-5 w-5" />
                 </div>
 
@@ -140,24 +181,27 @@ export function ContactSection() {
                     Connect With Us
                   </h3>
 
-                  <a
-                    href="https://www.tiktok.com/@ziancareelderlyservices"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-neutral-800"
-                  >
-                    <FaTiktok className="h-4 w-4 !text-white" />
-                    Follow us on TikTok
-                  </a>
-                  <a
-                    href="https://www.facebook.com/ziansafeharbour"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-[#1877F2] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
-                  >
-                    <FaFacebook className="h-4 w-4" />
-                    Facebook
-                  </a>
+                  <div className="mt-3 flex flex-wrap gap-3">
+                    <a
+                      href="https://www.tiktok.com/@ziancareelderlyservices"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-neutral-800"
+                    >
+                      <FaTiktok className="h-4 w-4" />
+                      Follow us on TikTok
+                    </a>
+
+                    <a
+                      href="https://www.facebook.com/ziansafeharbour"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-[#1877F2] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
+                    >
+                      <FaFacebook className="h-4 w-4" />
+                      Facebook
+                    </a>
+                  </div>
 
                   <p className="mt-3 text-sm text-muted">
                     Home care tips, caregiver advice and updates from our team.
@@ -179,79 +223,158 @@ export function ContactSection() {
               possible.
             </p>
 
-            <form className="mt-8 space-y-6">
+            <form
+              className="mt-8 space-y-6"
+              onSubmit={handleSubmit}
+            >
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <label className="mb-2 block font-medium">
+                  <label
+                    htmlFor="name"
+                    className="mb-2 block font-medium"
+                  >
                     Full Name
                   </label>
 
                   <input
+                    id="name"
+                    name="name"
                     type="text"
                     placeholder="John Doe"
+                    required
                     className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block font-medium">
+                  <label
+                    htmlFor="phone"
+                    className="mb-2 block font-medium"
+                  >
                     Phone Number
                   </label>
 
                   <input
+                    id="phone"
+                    name="phone"
                     type="tel"
                     placeholder="+254 790 174 570"
+                    required
                     className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="mb-2 block font-medium">
+                <label
+                  htmlFor="email"
+                  className="mb-2 block font-medium"
+                >
                   Email Address
                 </label>
 
                 <input
+                  id="email"
+                  name="email"
                   type="email"
-                  placeholder="ziancare2026@gmail.com"
+                  placeholder="you@example.com"
+                  required
                   className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block font-medium">
+                <label
+                  htmlFor="service"
+                  className="mb-2 block font-medium"
+                >
                   What service are you interested in?
                 </label>
 
-                <select className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none">
+                <select
+                  id="service"
+                  name="service"
+                  defaultValue="I'm not sure yet"
+                  className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
+                >
                   <option>I'm not sure yet</option>
-                  <option>Personal Care</option>
-                  <option>Medication Support</option>
-                  <option>Recovery Care</option>
-                  <option>Physiotherapy</option>
-                  <option>Palliative Care</option>
-                  <option>Respite Care</option>
+                  <option>Personal & Daily Care</option>
+                  <option>Clinical Care Services</option>
+                  <option>Recovery & Therapy Support</option>
+                  <option>Specialized Care</option>
                 </select>
               </div>
 
               <div>
-                <label className="mb-2 block font-medium">
+                <label
+                  htmlFor="message"
+                  className="mb-2 block font-medium"
+                >
                   How can we help?
                 </label>
 
                 <textarea
+                  id="message"
+                  name="message"
                   rows={6}
+                  required
                   placeholder="Tell us a little about your care needs..."
                   className="w-full rounded-xl border border-border bg-background px-4 py-3 focus:border-primary focus:outline-none"
                 />
               </div>
 
+              {/* Success Message */}
+
+              {status === "success" && (
+                <div
+                  role="status"
+                  className="rounded-xl border border-green-200 bg-green-50 px-5 py-4 text-sm text-green-800"
+                >
+                  <p className="font-semibold">
+                    Message sent successfully ✓
+                  </p>
+
+                  <p className="mt-1">
+                    Thank you for contacting Zian SafeHarbour Care. Our team
+                    will get back to you as soon as possible.
+                  </p>
+                </div>
+              )}
+
+              {/* Error Message */}
+
+              {status === "error" && (
+                <div
+                  role="alert"
+                  className="rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-800"
+                >
+                  <p className="font-semibold">
+                    We couldn't send your message.
+                  </p>
+
+                  <p className="mt-1">
+                    Please try again, or contact us directly by phone or
+                    WhatsApp.
+                  </p>
+                </div>
+              )}
+
               <Button
                 type="submit"
                 size="lg"
-                className="w-full"
+                disabled={status === "sending"}
+                className="w-full transition-all duration-300"
               >
-                Send Message
+                {status === "sending" ? (
+                  <span className="flex items-center justify-center gap-3">
+                    <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                    Sending...
+                  </span>
+                ) : status === "success" ? (
+                  "Message Sent ✓"
+                ) : (
+                  "Send Message"
+                )}
               </Button>
 
               <div className="flex flex-wrap justify-center gap-6 pt-2 text-sm text-muted">
