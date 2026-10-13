@@ -1,4 +1,4 @@
-import { Bath, Stethoscope, Activity, HandHeart } from "lucide-react";
+import { Bath, Stethoscope, GraduationCap, HeartPulse, Activity, HandHeart } from "lucide-react";
 import { Service } from "./types";
 
 export const SERVICES: Service[] = [
@@ -271,6 +271,148 @@ export const SERVICES: Service[] = [
         question: "How soon after hospital discharge can care begin?",
         answer:
           "We can typically arrange post-hospital care to begin the same day as discharge, following an initial assessment.",
+      },
+    ],
+  },
+  {
+    slug: "first-aid-bls-cpr-training",
+    icon: HeartPulse,
+    title: "First Aid, BLS & CPR Training",
+    shortDescription:
+      "Hands-on emergency response training that equips families, carers and workplaces to act confidently when every second counts.",
+    heroImage: "/services/first-aid-hero.jpeg",
+    heroImage2: "/services/first-aid-hero2.jpeg",
+    overview:
+      "Our First Aid, BLS & CPR Training teaches practical, life-saving skills through guided, hands-on sessions. Delivered by trained professionals, our courses help families, caregivers and organisations respond calmly and correctly in the critical moments before emergency help arrives.",
+    includes: [
+      {
+        title: "Basic Life Support (BLS)",
+        image: "/services/bls-training.png",
+        description:
+          "Structured training in recognising and responding to life-threatening emergencies, including airway support and early intervention.",
+      },
+      {
+        title: "CPR & Defibrillator Awareness",
+        image: "/services/cpr-training.png",
+        description:
+          "Practical CPR practice on manikins for adults, children and infants, with guidance on using an AED where available.",
+      },
+      {
+        title: "Choking & Airway Emergencies",
+        image: "/services/choking-response.png",
+        description:
+          "Clear, step-by-step techniques for responding to choking and breathing difficulties.",
+      },
+      {
+        title: "Wound, Burn & Bleeding Control",
+        image: "/services/wound-first-aid.png",
+        description:
+          "Confident first response to cuts, burns, bleeding and minor injuries until professional care is available.",
+      },
+      {
+        title: "Falls, Fractures & Medical Emergencies",
+        image: "/services/falls-first-aid.png",
+        description:
+          "Safe handling after falls and fractures, plus recognising signs of stroke, seizures, diabetic emergencies and heart attack.",
+      },
+    ],
+    benefits: [
+      "Build confidence to act in an emergency",
+      "Practical, hands-on learning",
+      "Suitable for beginners, no prior experience needed",
+      "Helps protect loved ones at home",
+      "Group and workplace sessions available",
+    ],
+    suitableFor: [
+      "Family members caring for older or unwell relatives",
+      "Parents, guardians and childcare workers",
+      "Schools, churches and community groups",
+      "Businesses and workplace safety teams",
+    ],
+    faqs: [
+      {
+        question: "Do I need any prior experience to attend?",
+        answer:
+          "No. Our sessions are designed for complete beginners and build skills step by step with plenty of hands-on practice.",
+      },
+      {
+        question: "Can you deliver training at our home, workplace or school?",
+        answer:
+          "Yes. We can arrange group sessions at your location, and tailor the content to your setting. Contact us to discuss group sizes and scheduling.",
+      },
+    ],
+  },
+  {
+    slug: "professional-caregiver-training",
+    icon: GraduationCap,
+    title: "Professional Caregiver Training Programme",
+    shortDescription:
+      "Practical, compassionate training that prepares individuals to deliver safe, dignified and professional home care.",
+    heroImage: "/services/caregiver-training-hero.jpeg",
+    heroImage2: "/services/caregiver-training-hero2.jpeg",
+    overview:
+      "Our Professional Caregiver Training Programme prepares aspiring and practising caregivers with the knowledge, skills and values needed for quality home care. Combining classroom learning with supervised practical sessions, the programme builds confidence in personal care, safety, communication and the compassionate support of clients and their families.",
+    includes: [
+      {
+        title: "Personal Care & Hygiene Skills",
+        image: "/services/training-personal-care.png",
+        description:
+          "Safe, respectful techniques for bathing, dressing, grooming and toileting that protect client dignity.",
+      },
+      {
+        title: "Safe Moving & Handling",
+        image: "/services/training-handling.png",
+        description:
+          "Correct transfer, mobility and repositioning techniques that protect both the client and the caregiver.",
+      },
+      {
+        title: "Infection Prevention & Safety",
+        image: "/services/training-infection-control.png",
+        description:
+          "Hand hygiene, safe handling of equipment and everyday practices that keep clients and caregivers healthy.",
+      },
+      {
+        title: "Dementia & Chronic Illness Awareness",
+        image: "/services/training-dementia.png",
+        description:
+          "Understanding common conditions and learning communication approaches that reduce distress and build trust.",
+      },
+      {
+        title: "Emergency Response & First Aid",
+        image: "/services/training-emergency.png",
+        description:
+          "Core first aid and emergency response skills so caregivers can act quickly and appropriately.",
+      },
+      {
+        title: "Professional Conduct & Safeguarding",
+        image: "/services/training-safeguarding.png",
+        description:
+          "Ethics, confidentiality, record keeping and safeguarding principles for trusted, accountable care.",
+      },
+    ],
+    benefits: [
+      "Build job-ready home care skills",
+      "Learn through practical, supervised sessions",
+      "Confidence handling real care situations",
+      "Raises the standard of care for clients",
+      "Pathway into professional caregiving",
+    ],
+    suitableFor: [
+      "Aspiring professional caregivers",
+      "Family members providing long-term care at home",
+      "Domestic and household support staff",
+      "Practising caregivers seeking refresher training",
+    ],
+    faqs: [
+      {
+        question: "Do I need a healthcare background to join?",
+        answer:
+          "No. The programme is open to beginners and is taught from the ground up, with practical guidance at every stage.",
+      },
+      {
+        question: "How long does the programme run?",
+        answer:
+          "Duration depends on the course option you choose. Contact us for current schedules, class sizes and what is covered in each intake.",
       },
     ],
   },

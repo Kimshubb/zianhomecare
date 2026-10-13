@@ -5,6 +5,7 @@ import "./globals.css";
 
 import { Navbar } from "@/components/marketing/Navbar";
 import { Footer } from "@/components/marketing/sections/Footer";
+import { PromoPoster } from "@/components/marketing/Promo"; 
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsapp";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -43,6 +44,7 @@ export default function RootLayout({
 
         <Footer />
         <FloatingWhatsApp />
+        <PromoPoster /> {/* added */}
         <Analytics/>
         <SpeedInsights/>
         <Script id="microsoft-clarity" strategy="afterInteractive">
