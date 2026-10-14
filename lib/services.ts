@@ -280,38 +280,38 @@ export const SERVICES: Service[] = [
     title: "First Aid, BLS & CPR Training",
     shortDescription:
       "Hands-on emergency response training that equips families, carers and workplaces to act confidently when every second counts.",
-    heroImage: "/services/first-aid-hero.jpeg",
+    heroImage: "/services/bls.jpeg",
     heroImage2: "/services/first-aid-hero2.jpeg",
     overview:
       "Our First Aid, BLS & CPR Training teaches practical, life-saving skills through guided, hands-on sessions. Delivered by trained professionals, our courses help families, caregivers and organisations respond calmly and correctly in the critical moments before emergency help arrives.",
     includes: [
       {
         title: "Basic Life Support (BLS)",
-        image: "/services/bls-training.png",
+        image: "/services/bls.png",
         description:
           "Structured training in recognising and responding to life-threatening emergencies, including airway support and early intervention.",
       },
       {
         title: "CPR & Defibrillator Awareness",
-        image: "/services/cpr-training.png",
+        image: "/services/cpr.png",
         description:
           "Practical CPR practice on manikins for adults, children and infants, with guidance on using an AED where available.",
       },
       {
         title: "Choking & Airway Emergencies",
-        image: "/services/choking-response.png",
+        image: "/services/choking.png",
         description:
           "Clear, step-by-step techniques for responding to choking and breathing difficulties.",
       },
       {
         title: "Wound, Burn & Bleeding Control",
-        image: "/services/wound-first-aid.png",
+        image: "/services/wound-care.png",
         description:
           "Confident first response to cuts, burns, bleeding and minor injuries until professional care is available.",
       },
       {
         title: "Falls, Fractures & Medical Emergencies",
-        image: "/services/falls-first-aid.png",
+        image: "/services/falls.jpg",
         description:
           "Safe handling after falls and fractures, plus recognising signs of stroke, seizures, diabetic emergencies and heart attack.",
       },
@@ -345,35 +345,35 @@ export const SERVICES: Service[] = [
   {
     slug: "professional-caregiver-training",
     icon: GraduationCap,
-    title: "Professional Caregiver Training Programme",
+    title: "Advanced Caregiver Training Programme",
     shortDescription:
       "Practical, compassionate training that prepares individuals to deliver safe, dignified and professional home care.",
-    heroImage: "/services/caregiver-training-hero.jpeg",
+    heroImage: "/services/school.jpeg",
     heroImage2: "/services/caregiver-training-hero2.jpeg",
     overview:
       "Our Professional Caregiver Training Programme prepares aspiring and practising caregivers with the knowledge, skills and values needed for quality home care. Combining classroom learning with supervised practical sessions, the programme builds confidence in personal care, safety, communication and the compassionate support of clients and their families.",
     includes: [
       {
         title: "Personal Care & Hygiene Skills",
-        image: "/services/training-personal-care.png",
+        image: "/services/personal-care.png",
         description:
           "Safe, respectful techniques for bathing, dressing, grooming and toileting that protect client dignity.",
       },
       {
         title: "Safe Moving & Handling",
-        image: "/services/training-handling.png",
+        image: "/services/mobility.png",
         description:
           "Correct transfer, mobility and repositioning techniques that protect both the client and the caregiver.",
       },
       {
         title: "Infection Prevention & Safety",
-        image: "/services/training-infection-control.png",
+        image: "/services/discharge-new.png",
         description:
           "Hand hygiene, safe handling of equipment and everyday practices that keep clients and caregivers healthy.",
       },
       {
         title: "Dementia & Chronic Illness Awareness",
-        image: "/services/training-dementia.png",
+        image: "/services/home-care.png",
         description:
           "Understanding common conditions and learning communication approaches that reduce distress and build trust.",
       },
@@ -385,7 +385,7 @@ export const SERVICES: Service[] = [
       },
       {
         title: "Professional Conduct & Safeguarding",
-        image: "/services/training-safeguarding.png",
+        image: "/services/school.jpeg",
         description:
           "Ethics, confidentiality, record keeping and safeguarding principles for trusted, accountable care.",
       },

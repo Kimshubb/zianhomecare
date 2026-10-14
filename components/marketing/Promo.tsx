@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { cn } from "@/lib/cn";
-import { POSTERS } from "./posters";
+import { POSTERS, WHATSAPP_NUMBER } from "./posters";
 
 /** Show the poster this long after the page opens (or on first scroll, whichever is first). */
 const SHOW_AFTER_MS = 2000;
@@ -21,6 +20,7 @@ export function PromoPoster() {
 
   const poster = POSTERS[index];
   const hasMany = POSTERS.length > 1;
+  const ratio = poster ? poster.width / poster.height : 1;
 
   const close = useCallback(() => {
     setOpen(false);
@@ -117,20 +117,29 @@ export function PromoPoster() {
         aria-modal="true"
         aria-label={poster.alt}
         onClick={(e) => e.stopPropagation()}
+        // Card is as wide as the poster needs to be to fit the screen height (no cropping),
+        // capped at 32rem and never wider than the screen.
+        style={{
+          width: `min(100%, 32rem, calc((100dvh - 12rem) * ${ratio}))`,
+          minWidth: "min(100%, 16rem)",
+        }}
         className={cn(
-          "relative m-auto w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-2xl",
+          "relative m-auto overflow-hidden rounded-2xl bg-white shadow-2xl",
           "transition duration-300 motion-reduce:transition-none",
           entered ? "scale-100 opacity-100" : "scale-95 opacity-0"
         )}
       >
         {/* Poster */}
-        <div className="relative aspect-[4/5] max-h-[65vh] w-full bg-slate-100">
+        <div
+          className="relative w-full bg-slate-100"
+          style={{ aspectRatio: `${poster.width} / ${poster.height}` }}
+        >
           <Image
             key={poster.id}
             src={poster.image}
             alt={poster.alt}
             fill
-            sizes="(max-width: 768px) 90vw, 448px"
+            sizes="(max-width: 768px) 90vw, 512px"
             className="object-cover"
           />
 
@@ -182,15 +191,17 @@ export function PromoPoster() {
             </div>
           )}
 
-          {poster.href && (
-            <Link
-              href={poster.href}
-              onClick={close}
-              className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
-            >
-              {poster.ctaLabel ?? "Learn more"}
-            </Link>
-          )}
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+              poster.whatsappMessage
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className="inline-flex w-full items-center justify-center rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1ebe5b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
+          >
+            {poster.ctaLabel ?? "Enrol on WhatsApp"}
+          </a>
 
           <button
             type="button"

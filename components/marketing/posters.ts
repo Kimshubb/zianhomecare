@@ -1,26 +1,39 @@
+
+export const WHATSAPP_NUMBER = "254790174570";
+
 export interface Poster {
   id: string;
-  /** Path under /public, e.g. "/posters/first-aid-training.jpg" (4:5 portrait works best) */
+  /** Path under /public, e.g. "/posters/training-2.jpeg" */
   image: string;
+  /** Pixel size of the image file. Used to show the poster uncropped at its own shape. */
+  width: number;
+  height: number;
   alt: string;
-  /** Where the main button goes. Omit to show the poster with no call-to-action. */
-  href?: string;
+  /** Message pre-filled in WhatsApp when the visitor taps the button. */
+  whatsappMessage: string;
+  /** Button label. Defaults to "Enrol on WhatsApp". */
   ctaLabel?: string;
 }
 
 export const POSTERS: Poster[] = [
   {
-    id: "first-aid-bls-cpr",
-    image: "/posters/poster-training.jpeg",
-    alt: "First Aid, BLS and CPR training now open for enrolment",
-    href: "/services/first-aid-bls-cpr-training",
-    ctaLabel: "Learn more",
+    id: "september-2026-intake",
+    image: "/posters/training-2.jpeg",
+    width: 1024,
+    height: 1536,
+    alt: "Zian Safe Harbour Care September 2026 intake is open",
+    whatsappMessage:
+      "Hello Zian Safe Harbour Care, I saw the September 2026 intake poster and I would like to enrol in the caregiver training.",
+    ctaLabel: "Enrol Now",
   },
   {
-    id: "caregiver-training",
-    image: "/posters/training-2.jpeg",
-    alt: "Professional Caregiver Training Programme now open for enrolment",
-    href: "/services/professional-caregiver-training",
-    ctaLabel: "Learn more",
+    id: "september-your-turn",
+    image: "/posters/poster-training.jpeg",
+    width: 904,
+    height: 1280,
+    alt: "September is your turn: September 2026 intakes now open at Zian Safe Harbour Care",
+    whatsappMessage:
+      "Hello Zian Safe Harbour Care, I saw the September 2026 intakes poster and I would like to know more about the training programmes.",
+    ctaLabel: "Enrol Now",
   },
 ];
