@@ -28,7 +28,7 @@ export const POSTERS: Poster[] = [
   },
   {
     id: "september-your-turn",
-    image: "/posters/poster-training.jpeg",
+    image: "/posters/november2.jpeg",
     width: 904,
     height: 1280,
     alt: "September is your turn: September 2026 intakes now open at Zian Safe Harbour Care",
