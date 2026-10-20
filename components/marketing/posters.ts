@@ -17,8 +17,8 @@ export interface Poster {
 
 export const POSTERS: Poster[] = [
   {
-    id: "september-2026-intake",
-    image: "/posters/training-2.jpeg",
+    id: "2026-intake",
+    image: "/posters/november.jpeg",
     width: 1024,
     height: 1536,
     alt: "Zian Safe Harbour Care September 2026 intake is open",

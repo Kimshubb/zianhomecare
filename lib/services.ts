@@ -280,8 +280,8 @@ export const SERVICES: Service[] = [
     title: "First Aid, BLS & CPR Training",
     shortDescription:
       "Hands-on emergency response training that equips families, carers and workplaces to act confidently when every second counts.",
-    heroImage: "/services/bls.jpeg",
-    heroImage2: "/services/first-aid-hero2.jpeg",
+    heroImage: "/services/bls.png",
+    heroImage2: "/services/caregiver-training-hero2.jfif",
     overview:
       "Our First Aid, BLS & CPR Training teaches practical, life-saving skills through guided, hands-on sessions. Delivered by trained professionals, our courses help families, caregivers and organisations respond calmly and correctly in the critical moments before emergency help arrives.",
     includes: [
@@ -349,7 +349,7 @@ export const SERVICES: Service[] = [
     shortDescription:
       "Practical, compassionate training that prepares individuals to deliver safe, dignified and professional home care.",
     heroImage: "/services/school.jpeg",
-    heroImage2: "/services/caregiver-training-hero2.jpeg",
+    heroImage2: "/services/caregiver-training-hero2.jfif",
     overview:
       "Our Professional Caregiver Training Programme prepares aspiring and practising caregivers with the knowledge, skills and values needed for quality home care. Combining classroom learning with supervised practical sessions, the programme builds confidence in personal care, safety, communication and the compassionate support of clients and their families.",
     includes: [
@@ -379,7 +379,7 @@ export const SERVICES: Service[] = [
       },
       {
         title: "Emergency Response & First Aid",
-        image: "/services/training-emergency.png",
+        image: "/services/injury.png",
         description:
           "Core first aid and emergency response skills so caregivers can act quickly and appropriately.",
       },
